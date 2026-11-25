@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bản thử: chặn Google lập chỉ mục. Xoá dòng dưới khi ra mắt chính thức. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Văn hoá cà phê và hướng dẫn pha | Ông Cao Coffee</title>
+<meta name="description" content="Từ phin nhôm đến drip bag, espresso, moka pot, French press, cold brew: văn hoá cà phê Việt và hướng dẫn pha từng bước.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Dancing+Script:wght@500..700&family=Fraunces:opsz,wght@9..144,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=91">
+<link rel="stylesheet" href="assets/pages.css?v=7">
+<script>
+  document.documentElement.classList.add('js');
+  try { var l = localStorage.getItem('ongcao-lang'); if (l === 'en' || l === 'vi') document.documentElement.lang = l; } catch (e) {}
+  try { if (sessionStorage.getItem('oc-draft-closed')) document.documentElement.classList.add('no-draft'); } catch (e) {}
+  // Chuyển trang: bỏ qua hiệu ứng khi tab đang ẩn để trang không bị kẹt ở màn che
+  addEventListener('pagereveal', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+  addEventListener('pageswap', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+</script>
+</head>
+<body class="page" data-page="van-hoa">
+
+<a class="skip" href="#main"><span lang="vi">Bỏ qua tới nội dung</span><span lang="en">Skip to content</span></a>
+
+<div class="draft-note" id="draftNote" role="note">
+  <p>
+    <span lang="vi">Bản thử. Chữ gạch chân đứt nét là nội dung tạm, sẽ thay bằng thông tin thật.</span>
+    <span lang="en">Draft. Dashed-underline text is placeholder content, to be replaced with real details.</span>
+  </p>
+  <button type="button" class="draft-note__close" id="draftClose" aria-label="Đóng ghi chú">×</button>
+</div>
+
+<!-- 0. Header -->
+<header class="site-header" id="header">
+  <div class="wrap header__inner">
+    <a href="index.html" class="logo" aria-label="Ông Cao Coffee">
+      <span class="logo__mark" aria-hidden="true">ÔC</span>
+      <span class="logo__word">Ông Cao</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Chính">
+      <a href="lich-su.html" data-page="lich-su"><span lang="vi">Lịch sử</span><span lang="en">History</span></a>
+      <a href="ve-ong-cao.html" data-page="ve-ong-cao"><span lang="vi">Về Ông Cao</span><span lang="en">About</span></a>
+      <a href="san-pham.html" data-page="san-pham"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></a>
+      <a href="van-hoa.html" data-page="van-hoa"><span lang="vi">Văn hoá</span><span lang="en">Culture</span></a>
+      <a href="mot-nam.html" data-page="mot-nam"><span lang="vi">Một năm</span><span lang="en">The year</span></a>
+      <a href="nhat-ky.html" data-page="nhat-ky"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang" role="group" aria-label="Ngôn ngữ / Language">
+        <button type="button" data-set-lang="vi" aria-pressed="true">VI</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="san-pham.html" class="cart" id="cart" aria-live="polite">
+        <span lang="vi">Giỏ</span><span lang="en">Cart</span>
+        <span class="cart__count" id="cartCount">0</span>
+      </a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
+        <span lang="vi">Menu</span><span lang="en">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="phero chero" data-reveal data-light>
+  <div class="wrap chero__grid">
+    <div class="phero__inner">
+      <p class="kicker"><span lang="vi">Văn hoá cà phê nhà ông Cao</span><span lang="en">Coffee culture at Mr. Cao's</span></p>
+      <h1 class="bigt "><span lang="vi"><span class="bw">Từ phin nhôm</span> <span class="bw"><span class="bigt__s">đến</span> tách của bạn</span></span><span lang="en"><span class="bw">From the phin</span> <span class="bw"><span class="bigt__s">to</span> your cup</span></span></h1>
+      <p class="phero__lead"><span lang="vi">Mỗi sáng ở nhà ông Cao bắt đầu bằng tiếng nước sôi và một chiếc phin nhôm. Từ chiếc phin ấy, cách người Việt uống cà phê đã đi rất xa: túi lọc cho buổi sáng vội, máy espresso ở quán, bình cold brew trong tủ lạnh. Trang này kể lại hành trình đó và chỉ bạn pha từng kiểu như một barista.</span><span lang="en">Every morning at Mr. Cao's starts with boiling water and an aluminium phin. From that phin, the way Vietnamese drink coffee has travelled far: drip bags for rushed mornings, espresso machines in cafés, cold brew in the fridge. This page tells that journey and shows you how to brew each style like a barista.</span></p>
+      <div class="pill-btn pill-btn--ink"><a href="#pha" class="pill-btn__label"><span lang="vi">Học cách pha</span><span lang="en">Learn to brew</span></a><a href="#pha" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div>
+    </div>
+    <div class="phin-art">
+        <svg viewBox="0 0 240 300" class="lineart" aria-hidden="true">
+          <path class="steam" d="M104 40c-8-10 8-18 0-28"/><path class="steam steam--2" d="M136 44c-8-10 8-18 0-28"/>
+          <path class="draw" d="M84 74c0-14 16-22 36-22s36 8 36 22z"/><path class="draw" d="M114 52v-6h12v6"/>
+          <path class="draw" d="M88 78h64l-4 54H92z"/><path class="draw" d="M100 92h40" stroke-dasharray="2 5"/>
+          <path class="draw" d="M60 136h120"/><path class="draw" d="M70 136l6 7h88l6-7"/>
+          <circle class="drop" cx="120" cy="152" r="2.8"/><circle class="drop drop--2" cx="120" cy="152" r="2.8"/>
+          <path class="level" d="M86 214h68l-4.4 56H90.4z"/>
+          <path class="draw" d="M78 150h84l-9 122H87z"/>
+          <path class="draw" d="M54 282h132"/>
+        </svg>
+    </div>
+  </div>
+</section>
+
+<section class="evo">
+  <div class="wrap">
+    <div class="evo__head" data-reveal>
+      <div>
+        <p class="kicker"><span lang="vi">Hành trình của chiếc phin</span><span lang="en">The journey of the phin</span></p>
+        <h2 class="bigt "><span lang="vi"><span class="bw">Cà phê</span> <span class="bw"><span class="bigt__s">của</span> người Việt</span></span><span lang="en"><span class="bw">Coffee</span> <span class="bw"><span class="bigt__s">the</span> Vietnamese way</span></span></h2>
+        <p class="phero__lead"><span lang="vi">Từ chiếc phin trong bếp đến bình cold brew trong tủ lạnh: cách pha đổi thay, nhưng thói quen ngồi lại bên một ly cà phê thì vẫn vậy.</span><span lang="en">From the phin in the kitchen to cold brew in the fridge: the methods change, but the habit of sitting down over a cup stays the same.</span></p>
+      </div>
+      <div class="evo__nav">
+        <button type="button" id="evoPrev" aria-label="Trước / Previous"><svg viewBox="0 0 20 20"><path d="M16 10H5M9 5l-5 5 5 5"/></svg></button>
+        <button type="button" id="evoNext" aria-label="Sau / Next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="evo__rail" id="evoRail">
+      <article class="evo__card" style="--tone: var(--cherry)">
+        <p class="kicker"><span lang="vi">Mỗi sáng</span><span lang="en">Every morning</span></p>
+        <div class="evo__icon"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M17 12c0-3 3-5 7-5s7 2 7 5z"/><path class="draw" d="M17.5 13h13l-1 9.5h-11z"/><path class="draw" d="M12 23.5h24"/><path class="draw" d="M14 27h20l-2.2 14H16.2z"/><path class="draw" d="M34 29.5c3 0 4 1.6 4 3.2s-1.4 3.3-4.6 3.3"/><circle class="drop" cx="24" cy="25.4" r=".7"/></svg></div>
+        <h3 class="evo__title"><span lang="vi">Phin nhôm</span><span lang="en">The aluminium phin</span></h3>
+        <p class="evo__text"><span lang="vi">Nước sôi, phin nhôm, chờ từng giọt. Cách pha quen của nhiều gia đình Việt, trong đó có nhà ông Cao.</span><span lang="en">Boiling water, an aluminium phin and the wait for each drop. The way many Vietnamese families brew, Mr. Cao’s included.</span></p>
+      </article>
+      <article class="evo__card" style="--tone: var(--sun-600)">
+        <p class="kicker"><span lang="vi">Ly quen của phố</span><span lang="en">The street's own cup</span></p>
+        <div class="evo__icon"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M14 9h20l-3 32H17z"/><path class="draw" d="M28 4l-4 18"/><path class="draw" d="M18.5 17l4-1.2 1.2 4-4 1.2z"/><path class="draw" d="M24.5 23l4-1.2 1.2 4-4 1.2z"/><path class="draw" d="M16.4 31h15.2"/></svg></div>
+        <h3 class="evo__title"><span lang="vi">Cà phê sữa đá</span><span lang="en">Iced coffee with milk</span></h3>
+        <p class="evo__text"><span lang="vi">Robusta đậm gặp sữa đặc và đá, thành ly cà phê gần như ai cũng từng uống.</span><span lang="en">Strong Robusta meets condensed milk and ice: the cup almost everyone has had.</span></p>
+      </article>
+      <article class="evo__card" style="--tone: var(--leaf-600)">
+        <p class="kicker"><span lang="vi">Ghế nhựa, vỉa hè</span><span lang="en">Plastic stools, pavements</span></p>
+        <div class="evo__icon"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M19 9h10l-1.2 11h-7.6z"/><path class="draw" d="M29 11.5c2 0 3 1 3 2.2s-.9 2.4-3.3 2.4"/><path class="draw" d="M12 24h24"/><path class="draw" d="M14.5 24l-3 17M33.5 24l3 17"/><path class="draw" d="M16 33h16"/></svg></div>
+        <h3 class="evo__title"><span lang="vi">Quán cóc</span><span lang="en">Street-side cafés</span></h3>
+        <p class="evo__text"><span lang="vi">Ghế thấp, ly cà phê và câu chuyện buổi sáng. Cà phê thành nơi người ta gặp nhau.</span><span lang="en">Low stools, a cup and the morning chat. Coffee becomes where people meet.</span></p>
+      </article>
+      <article class="evo__card" style="--tone: var(--sky-deep)">
+        <p class="kicker"><span lang="vi">Cho buổi sáng vội</span><span lang="en">For rushed mornings</span></p>
+        <div class="evo__icon"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M17 9h14v15H17z"/><path class="draw" d="M20 13h8"/><path class="draw" d="M17 19l-5 7M31 19l5 7"/><path class="draw" d="M11 27h26l-2.6 14H13.6z"/><circle class="drop" cx="24" cy="25.6" r=".7"/></svg></div>
+        <h3 class="evo__title"><span lang="vi">Drip bag</span><span lang="en">Drip bags</span></h3>
+        <p class="evo__text"><span lang="vi">Túi lọc treo miệng ly: vẫn là cà phê lọc, gọn cho văn phòng và những chuyến đi.</span><span lang="en">A filter bag hung on the cup: still filtered coffee, neat for offices and travel.</span></p>
+      </article>
+      <article class="evo__card" style="--tone: var(--ocean)">
+        <p class="kicker"><span lang="vi">Quán hiện đại</span><span lang="en">Modern cafés</span></p>
+        <div class="evo__icon"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M11 7h26v6H11z"/><path class="draw" d="M15 13h18l-2 5H17z"/><path class="draw" d="M33 15.5h9"/><path class="draw" d="M21.5 19v6M26.5 19v6"/><path class="draw" d="M17 28h14l-1.6 10H18.6z"/><path class="draw" d="M31 30c2.4 0 3.4 1.3 3.4 2.6s-1 2.7-3.8 2.7"/><path class="draw" d="M13 41h22"/></svg></div>
+        <h3 class="evo__title"><span lang="vi">Pha máy và rót tay</span><span lang="en">Machines and pour over</span></h3>
+        <p class="evo__text"><span lang="vi">Espresso, latte, pour over: quán mới đưa Robusta Việt vào những cách pha của thế giới.</span><span lang="en">Espresso, lattes, pour over: new cafés bring Vietnamese Robusta into the world’s brewing styles.</span></p>
+      </article>
+      <article class="evo__card" style="--tone: var(--leaf-700)">
+        <p class="kicker"><span lang="vi">Ngày nóng</span><span lang="en">Hot days</span></p>
+        <div class="evo__icon"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M15 8h18v5H15z"/><path class="draw" d="M14 13h20v26a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3z"/><path class="draw" d="M14 21h20"/><path class="draw" d="M18.5 27l5-1.6 1.6 5-5 1.6z"/><path class="draw" d="M26 32.5l4.6-1 1 4.6-4.6 1z"/></svg></div>
+        <h3 class="evo__title"><span lang="vi">Cold brew</span><span lang="en">Cold brew</span></h3>
+        <p class="evo__text"><span lang="vi">Ngâm lạnh nhiều giờ, vị êm và ngọt hậu, để sẵn trong tủ lạnh cả tuần.</span><span lang="en">Steeped cold for hours, smooth with a sweet finish, ready in the fridge all week.</span></p>
+      </article>
+  </div>
+  <div class="wrap"><div class="evo__bar" id="evoBar" aria-hidden="true"><i></i></div></div>
+</section>
+
+<section class="brew" id="pha" data-light>
+  <div class="wrap">
+    <div class="brew__head" data-reveal>
+      <p class="kicker"><span lang="vi">Pha như một barista</span><span lang="en">Brew like a barista</span></p>
+      <h2 class="bigt "><span lang="vi"><span class="bw">Tám cách</span> <span class="bw"><span class="bigt__s">pha</span> tại nhà</span></span><span lang="en"><span class="bw">Eight ways</span> <span class="bw"><span class="bigt__s">to brew</span> at home</span></span></h2>
+      <p class="brew__lead"><span lang="vi">Chọn dụng cụ bạn có. Mỗi cách pha có thông số khởi đầu, công cụ tính lượng nước và đồng hồ đếm theo từng bước.</span><span lang="en">Pick the gear you have. Each method comes with starting numbers, a water calculator and a step-by-step timer.</span></p>
+    </div>
+    <div class="brew__tabs"><div class="chips chips--dark" role="tablist" aria-label="Cách pha" id="brewTabs"><span class="chips__pill" aria-hidden="true"></span><button type="button" class="chip" role="tab" data-v="phin" aria-selected="true"><span lang="vi">Phin</span><span lang="en">Phin</span></button><button type="button" class="chip" role="tab" data-v="drip" aria-selected="false"><span lang="vi">Drip bag</span><span lang="en">Drip bag</span></button><button type="button" class="chip" role="tab" data-v="espresso" aria-selected="false"><span lang="vi">Espresso</span><span lang="en">Espresso</span></button><button type="button" class="chip" role="tab" data-v="moka" aria-selected="false"><span lang="vi">Moka pot</span><span lang="en">Moka pot</span></button><button type="button" class="chip" role="tab" data-v="french" aria-selected="false"><span lang="vi">French press</span><span lang="en">French press</span></button><button type="button" class="chip" role="tab" data-v="cold" aria-selected="false"><span lang="vi">Cold brew</span><span lang="en">Cold brew</span></button><button type="button" class="chip" role="tab" data-v="v60" aria-selected="false"><span lang="vi">V60</span><span lang="en">V60</span></button><button type="button" class="chip" role="tab" data-v="aero" aria-selected="false"><span lang="vi">AeroPress</span><span lang="en">AeroPress</span></button></div></div>
+    <div class="brew__panel" id="brewPanel">
+      <div class="brew__card brew__swap">
+        <div class="brew__device" id="brewDevice"></div>
+        <h3 class="brew__name" id="brewName"></h3>
+        <p class="brew__desc" id="brewDesc"></p>
+        <div class="brew__taste" id="brewTaste"></div>
+        <a class="brew__pick" id="brewPick" href="san-pham.html"><span class="brew__pick-name"></span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></a>
+      </div>
+      <div class="brew__swap">
+        <div class="specs" id="brewSpecs"></div>
+        <div class="calc">
+          <div class="calc__row"><label for="brewG"><span lang="vi">Lượng cà phê</span><span lang="en">Coffee</span></label><output id="brewGOut"></output></div>
+          <input type="range" id="brewG" min="10" max="30" value="20">
+          <div class="calc__row"><span id="brewWLabel"></span><output id="brewWOut"></output></div>
+          <p class="calc__note"><span lang="vi">Kéo để đổi lượng cà phê, lượng nước tự tính theo tỉ lệ.</span><span lang="en">Slide to change the coffee; the water follows the ratio.</span></p>
+        </div>
+        <ol class="bsteps" id="brewSteps"></ol>
+        <div class="timer" id="brewTimer">
+          <div class="timer__ring"><svg viewBox="0 0 84 84" aria-hidden="true"><circle class="bg" cx="42" cy="42" r="38"/><circle class="fg" id="brewRing" cx="42" cy="42" r="38"/></svg><span class="timer__time" id="brewTime" aria-live="off">0:00</span></div>
+          <div class="timer__btns">
+            <button type="button" class="tbtn" id="brewStart"></button>
+            <button type="button" class="tbtn tbtn--ghost" id="brewReset"><span lang="vi">Làm lại</span><span lang="en">Reset</span></button>
+          </div>
+        </div>
+        <p class="timer__note" id="brewNote" hidden><span lang="vi">Cold brew cần 12–18 giờ nên không có đồng hồ đếm. Bạn đặt hẹn giờ trên điện thoại nhé.</span><span lang="en">Cold brew takes 12–18 hours, so there is no timer here. Set one on your phone.</span></p>
+      </div>
+    </div>
+    <p class="brew__foot"><span lang="vi">Thông số là điểm bắt đầu cho Robusta của nhà. Nếm, rồi chỉnh độ xay và tỉ lệ theo khẩu vị của bạn.</span><span lang="en">These numbers are a starting point for our Robusta. Taste, then adjust grind and ratio to your liking.</span></p>
+    <div id="brewSvgs" hidden><template data-svg="phin"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M17 12c0-3 3-5 7-5s7 2 7 5z"/><path class="draw" d="M17.5 13h13l-1 9.5h-11z"/><path class="draw" d="M12 23.5h24"/><path class="draw" d="M14 27h20l-2.2 14H16.2z"/><path class="draw" d="M34 29.5c3 0 4 1.6 4 3.2s-1.4 3.3-4.6 3.3"/><circle class="drop" cx="24" cy="25.4" r=".7"/></svg></template><template data-svg="drip"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M17 9h14v15H17z"/><path class="draw" d="M20 13h8"/><path class="draw" d="M17 19l-5 7M31 19l5 7"/><path class="draw" d="M11 27h26l-2.6 14H13.6z"/><circle class="drop" cx="24" cy="25.6" r=".7"/></svg></template><template data-svg="espresso"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M11 7h26v6H11z"/><path class="draw" d="M15 13h18l-2 5H17z"/><path class="draw" d="M33 15.5h9"/><path class="draw" d="M21.5 19v6M26.5 19v6"/><path class="draw" d="M17 28h14l-1.6 10H18.6z"/><path class="draw" d="M31 30c2.4 0 3.4 1.3 3.4 2.6s-1 2.7-3.8 2.7"/><path class="draw" d="M13 41h22"/></svg></template><template data-svg="moka"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M24 5v3"/><path class="draw" d="M17 8h14l-2 14H19z"/><path class="draw" d="M17.6 10.5l-5 3"/><path class="draw" d="M31 11c4 0 5 3 5 5s-2 4.5-4.6 4.5"/><path class="draw" d="M16 22h16"/><path class="draw" d="M19 22l-3 18h16l-3-18"/></svg></template><template data-svg="french"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M20 5h8"/><path class="draw" d="M24 5v25"/><path class="draw" d="M13 12h20"/><path class="draw" d="M14 12h18v29H14z"/><path class="draw" d="M14 30h18"/><path class="draw" d="M32 16h4v20h-4"/><path class="draw" d="M14 22h18" stroke-dasharray="1 2.5"/></svg></template><template data-svg="cold"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M15 8h18v5H15z"/><path class="draw" d="M14 13h20v26a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3z"/><path class="draw" d="M14 21h20"/><path class="draw" d="M18.5 27l5-1.6 1.6 5-5 1.6z"/><path class="draw" d="M26 32.5l4.6-1 1 4.6-4.6 1z"/></svg></template><template data-svg="v60"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M11 11h26l-8 13h-10z"/><path class="draw" d="M17 14l3.4 7.4M31 14l-3.4 7.4"/><path class="draw" d="M17 26h14"/><path class="draw" d="M14 28h20l-2 13H16z"/><circle class="drop" cx="24" cy="25.4" r=".7"/></svg></template><template data-svg="aero"><svg viewBox="0 0 48 48" class="lineart" aria-hidden="true"><path class="draw" d="M18 6h12v10H18z"/><path class="draw" d="M16 16h16v21H16z"/><path class="draw" d="M16 23h4M16 29h4"/><path class="draw" d="M14 37h20"/><path class="draw" d="M15 39h18l-2 6H17z"/></svg></template></div>
+  </div>
+</section>
+
+<section class="tips">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div><h2 class="bigt "><span lang="vi"><span class="bw">Mẹo</span> <span class="bw"><span class="bigt__s">của</span> nhà</span></span><span lang="en"><span class="bw">Tips</span> <span class="bw"><span class="bigt__s">from</span> home</span></span></h2></div>
+    </div>
+    <div class="tips__grid">
+      <div class="tip" data-rv style="--d: 0"><p class="tip__n">01</p><h3><span lang="vi">Nước</span><span lang="en">Water</span></h3><p><span lang="vi">Dùng nước lọc sạch, đun vừa sôi rồi để nghỉ chừng 30 giây trước khi rót.</span><span lang="en">Use clean filtered water, bring it just to the boil and let it rest about 30 seconds before pouring.</span></p></div>
+      <div class="tip" data-rv style="--d: 1"><p class="tip__n">02</p><h3><span lang="vi">Độ xay</span><span lang="en">Grind</span></h3><p><span lang="vi">Xay ngay trước khi pha. Đắng gắt thì xay thô hơn, nhạt và chua thì xay mịn hơn.</span><span lang="en">Grind right before brewing. Too harsh, go coarser; thin and sour, go finer.</span></p></div>
+      <div class="tip" data-rv style="--d: 2"><p class="tip__n">03</p><h3><span lang="vi">Cân, đừng đong</span><span lang="en">Weigh, don’t scoop</span></h3><p><span lang="vi">Một chiếc cân nhỏ giúp mỗi ly đều tay hơn nhiều so với đong bằng thìa.</span><span lang="en">A small scale makes every cup far more consistent than spoonfuls.</span></p></div>
+      <div class="tip" data-rv style="--d: 3"><p class="tip__n">04</p><h3><span lang="vi">Bảo quản</span><span lang="en">Storage</span></h3><p><span lang="vi">Giữ hạt trong túi kín, nơi mát và tối. Ngon nhất trong khoảng 2–4 tuần sau ngày rang.</span><span lang="en">Keep beans sealed, cool and dark. Best within about 2–4 weeks of roasting.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pcta" data-reveal>
+  <div class="wrap">
+    <h2 class="bigt "><span lang="vi"><span class="bw">Cà phê</span> <span class="bw"><span class="bigt__s">cho</span> từng cách pha</span></span><span lang="en"><span class="bw">Coffee</span> <span class="bw"><span class="bigt__s">for</span> every method</span></span></h2>
+    <p class="pcta__lead"><span lang="vi">Chọn gói hợp với dụng cụ của bạn, hoặc đọc thêm chuyện mùa vụ ở Đức An.</span><span lang="en">Pick the bag that suits your gear, or read more from the Đức An seasons.</span></p>
+    <div class="pcta__btns"><div class="pill-btn pill-btn--ink"><a href="san-pham.html" class="pill-btn__label"><span lang="vi">Xem sản phẩm</span><span lang="en">See products</span></a><a href="san-pham.html" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div><div class="pill-btn pill-btn--light"><a href="mot-nam.html" class="pill-btn__label"><span lang="vi">Một năm trên đất Đức An</span><span lang="en">A year in Đức An</span></a><a href="mot-nam.html" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div></div>
+  </div>
+</section>
+</main>
+
+<!-- 9. Đăng ký + footer -->
+<footer class="footer" data-light>
+  <!-- Màn cuối (học footer của Delta): nền nông trại đứng yên, câu slogan lớn ở giữa;
+       cuộn tiếp thì thẻ kính lớn trượt lên phủ qua, chứa toàn bộ thông tin footer -->
+  <div class="footer__pre" id="footerPre">
+    <div class="footer__bg" aria-hidden="true"><span class="ph__label tam"><span lang="vi">Ảnh hoặc video tạm: vườn cà phê Rừng Lạnh lúc sáng sớm</span><span lang="en">Placeholder photo or video: Rừng Lạnh orchard at dawn</span></span></div>
+    <div class="footer__hero" id="footerHero">
+      <p class="footer__kicker"><span lang="vi">Nông trại Rừng Lạnh · Đức An</span><span lang="en">Rừng Lạnh Farm · Đức An</span></p>
+      <p class="footer__slogan">
+        <span lang="vi"><span class="fw">Học <span class="footer__small">từ</span> đất,</span> <span class="fw">giữ <span class="footer__small">bằng</span> tay</span></span>
+        <span lang="en" class="tam"><span class="fw">Learned <span class="footer__small">from</span> the land,</span> <span class="fw">kept <span class="footer__small">by</span> hand</span></span>
+      </p>
+      <div class="pill-btn footer__btn">
+        <a href="index.html#ghe-shop" class="pill-btn__label"><span lang="vi">Ghé nông trại</span><span lang="en">Visit the farm</span></a>
+        <a href="index.html#ghe-shop" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thẻ kính lớn (học footer Delta): lúc đầu tràn mép và trượt chậm hơn tốc độ cuộn,
+       rồi co lại cách mép, bo góc và bắt kịp nội dung -->
+  <div class="footer__panel" id="footerPanel">
+    <span class="footer__glass lg" id="footerGlass" aria-hidden="true"></span>
+    <div class="footer__inner">
+      <a href="index.html" class="logo footer__logo" aria-label="Ông Cao Coffee"><span class="logo__mark" aria-hidden="true">ÔC</span><span class="logo__word">Ông Cao Coffee</span></a>
+
+      <div class="fcol fcol--a">
+        <h3 class="fcol__h"><span lang="vi">Về Ông Cao</span><span lang="en">About Ông Cao</span></h3>
+        <a href="lich-su.html"><span lang="vi">Chuyện ông Cao</span><span lang="en">Mr. Cao's story</span></a>
+        <a href="ve-ong-cao.html"><span lang="vi">Về thương hiệu</span><span lang="en">About the brand</span></a>
+        <a href="van-hoa.html"><span lang="vi">Văn hoá cà phê</span><span lang="en">Coffee culture</span></a>
+        <span class="fcol__sub">
+          <a href="van-hoa.html#pha"><span lang="vi">Hướng dẫn pha</span><span lang="en">Brewing guide</span></a>
+          <a href="mot-nam.html"><span lang="vi">Một năm ở Đức An</span><span lang="en">A year in Đức An</span></a>
+        </span>
+      </div>
+      <div class="fcol fcol--b">
+        <h3 class="fcol__h"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></h3>
+        <a href="san-pham.html">Signature</a>
+        <a href="san-pham.html"><span lang="vi">Hạt rang</span><span lang="en">Roasted beans</span></a>
+        <a href="san-pham.html"><span lang="vi">Cà phê bột</span><span lang="en">Ground coffee</span></a>
+        <a href="san-pham.html"><span lang="vi">Hạt nhân</span><span lang="en">Green beans</span></a>
+      </div>
+      <nav class="fcol fcol--c" aria-label="Footer">
+        <a href="san-pham.html" class="fcol__big"><span lang="vi">Mua cà phê</span><span lang="en">Shop coffee</span></a>
+        <a href="ve-ong-cao.html#noi-chon" class="fcol__big"><span lang="vi">Ghé thăm</span><span lang="en">Visit us</span></a>
+        <a href="nhat-ky.html" class="fcol__big"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+        <a href="#signup" class="fcol__big"><span lang="vi">Nhận thư mỗi mùa</span><span lang="en">Seasonal letter</span></a>
+      </nav>
+
+      <dl class="footer__contact">
+        <div><dt>Hotline</dt><dd class="tam">0___ ___ ___</dd></div>
+        <div><dt>Email</dt><dd class="tam">xinchao@ongcao.vn</dd></div>
+        <div><dt><span lang="vi">Nông trại</span><span lang="en">Farm</span></dt><dd><span lang="vi">Xã Đức An, tỉnh Lâm Đồng</span><span lang="en">Đức An Commune, Lâm Đồng</span></dd></div>
+        <p class="footer__motto"><span lang="vi">Nắng gió dưỡng hạt, tay người nối vị.</span><span lang="en">Sun and wind nurture the bean, hands carry on its taste.</span></p>
+      </dl>
+
+      <ul class="social" aria-label="Mạng xã hội">
+        <li><a href="https://facebook.com/OngCaoCoffee" class="social__a" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5h2.5V5h-2.5C12 5 10.5 6.6 10.5 9v2H8v3.5h2.5V21H14v-6.5h2.6l.4-3.5h-3V9.4c0-.6.2-.9.5-.9z"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.9" cy="7.1" r=".6" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4v10.6a3.1 3.1 0 1 1-3.1-3.1"/><path d="M13.5 4c.4 2.4 2 4 4.5 4.3"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4-2.5z" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Zalo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-4.7 0-8.5 3.1-8.5 7 0 2.1 1.1 4 2.9 5.3L5.8 20l3.6-1.8c.8.2 1.7.3 2.6.3 4.7 0 8.5-3.1 8.5-7s-3.8-7-8.5-7z"/><path d="M9.3 9.5h4.2l-4.2 4.6h4.4"/></svg></a></li>
+      </ul>
+
+      <div class="fcol fcol--d">
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+        <a href="#" class="tam"><span lang="vi">Đặt hàng cho quán và văn phòng</span><span lang="en">Orders for cafés and offices</span></a>
+        <a href="https://facebook.com/OngCaoCoffee" target="_blank" rel="noopener"><span lang="vi">Nhắn tin cho nhà mình</span><span lang="en">Message the family</span></a>
+      </div>
+
+      <div class="footer__signup">
+        <form class="signup" id="signup" novalidate>
+      <div>
+        <h3 class="signup__title"><span lang="vi">Nhận thư mỗi mùa về</span><span lang="en">Get a letter each new season</span></h3>
+        
+      </div>
+      <div class="signup__field">
+        <label for="email" class="sr-only">Email</label>
+        <input id="email" type="email" placeholder="ten@email.com" autocomplete="email">
+        <button type="submit" class="btn btn--buy"><span lang="vi">Đăng ký</span><span lang="en">Sign up</span></button>
+        <p class="signup__msg" id="signupMsg" role="status"></p>
+      </div>
+    </form>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <span>Ông Cao Coffee © 2026</span>
+      <span class="footer__bar-links">
+        <a href="#"><span lang="vi">Chính sách bảo mật</span><span lang="en">Privacy policy</span></a>
+        <a href="#"><span lang="vi">Điều khoản sử dụng</span><span lang="en">Terms of use</span></a>
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+      </span>
+      <span class="tam"><span lang="vi">Tên doanh nghiệp, mã số thuế: bổ sung sau</span><span lang="en">Company name, tax ID: to be added</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/main.js?v=90"></script>
+<script src="assets/pages.js?v=3"></script>
+</body>
+</html>

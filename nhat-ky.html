@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bản thử: chặn Google lập chỉ mục. Xoá dòng dưới khi ra mắt chính thức. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Nhật ký từ Đức An | Ông Cao Coffee</title>
+<meta name="description" content="Bản tin của Ông Cao Coffee: chuyện mùa vụ ở Đức An, cách pha cà phê và những ngày ở nông trại.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Dancing+Script:wght@500..700&family=Fraunces:opsz,wght@9..144,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=91">
+<link rel="stylesheet" href="assets/pages.css?v=7">
+<script>
+  document.documentElement.classList.add('js');
+  try { var l = localStorage.getItem('ongcao-lang'); if (l === 'en' || l === 'vi') document.documentElement.lang = l; } catch (e) {}
+  try { if (sessionStorage.getItem('oc-draft-closed')) document.documentElement.classList.add('no-draft'); } catch (e) {}
+  // Chuyển trang: bỏ qua hiệu ứng khi tab đang ẩn để trang không bị kẹt ở màn che
+  addEventListener('pagereveal', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+  addEventListener('pageswap', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+</script>
+</head>
+<body class="page" data-page="nhat-ky">
+
+<a class="skip" href="#main"><span lang="vi">Bỏ qua tới nội dung</span><span lang="en">Skip to content</span></a>
+
+<div class="draft-note" id="draftNote" role="note">
+  <p>
+    <span lang="vi">Bản thử. Chữ gạch chân đứt nét là nội dung tạm, sẽ thay bằng thông tin thật.</span>
+    <span lang="en">Draft. Dashed-underline text is placeholder content, to be replaced with real details.</span>
+  </p>
+  <button type="button" class="draft-note__close" id="draftClose" aria-label="Đóng ghi chú">×</button>
+</div>
+
+<!-- 0. Header -->
+<header class="site-header" id="header">
+  <div class="wrap header__inner">
+    <a href="index.html" class="logo" aria-label="Ông Cao Coffee">
+      <span class="logo__mark" aria-hidden="true">ÔC</span>
+      <span class="logo__word">Ông Cao</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Chính">
+      <a href="lich-su.html" data-page="lich-su"><span lang="vi">Lịch sử</span><span lang="en">History</span></a>
+      <a href="ve-ong-cao.html" data-page="ve-ong-cao"><span lang="vi">Về Ông Cao</span><span lang="en">About</span></a>
+      <a href="san-pham.html" data-page="san-pham"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></a>
+      <a href="van-hoa.html" data-page="van-hoa"><span lang="vi">Văn hoá</span><span lang="en">Culture</span></a>
+      <a href="mot-nam.html" data-page="mot-nam"><span lang="vi">Một năm</span><span lang="en">The year</span></a>
+      <a href="nhat-ky.html" data-page="nhat-ky"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang" role="group" aria-label="Ngôn ngữ / Language">
+        <button type="button" data-set-lang="vi" aria-pressed="true">VI</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="san-pham.html" class="cart" id="cart" aria-live="polite">
+        <span lang="vi">Giỏ</span><span lang="en">Cart</span>
+        <span class="cart__count" id="cartCount">0</span>
+      </a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
+        <span lang="vi">Menu</span><span lang="en">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="phero nhero" data-reveal data-light>
+  <div class="wrap phero__inner">
+    <p class="kicker"><span lang="vi">Bản tin của nhà</span><span lang="en">Our newsletter</span></p>
+    <h1 class="bigt "><span lang="vi"><span class="bw">Nhật ký</span> <span class="bw"><span class="bigt__s">từ</span> Đức An</span></span><span lang="en"><span class="bw">Notes</span> <span class="bw"><span class="bigt__s">from</span> Đức An</span></span></h1>
+    <p class="phero__lead"><span lang="vi">Chuyện mùa vụ, cách pha và những ngày ở nông trại, do người trong nhà kể lại. Mỗi mùa một lá thư, không gửi quảng cáo.</span><span lang="en">Seasons, brewing and days on the farm, told by the family. One letter per season, no adverts.</span></p>
+    <div class="phero__extra">
+      <form class="nsub lg js-signup" novalidate>
+        <label for="nEmail" class="sr-only">Email</label>
+        <input id="nEmail" type="email" placeholder="ten@email.com" autocomplete="email">
+        <button type="submit"><span lang="vi">Nhận thư mỗi mùa</span><span lang="en">Get the letter</span></button>
+      </form>
+      <p class="nsub__msg" role="status"></p>
+    </div>
+  </div>
+</section>
+
+<section class="nfeat" data-light>
+  <div class="wrap">
+    <article data-rv>
+      <a href="#" class="nfeat__link">
+        <div class="jfeat__img rv-img"><div class="ph " style="--ph: var(--leaf-600)" data-py="30"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Nông trại</span><span lang="en">Farm</span><i></i><span class="tam">12/11/2026</span></span></div>
+        <div>
+          <p class="kicker"><span lang="vi">Bài nổi bật · 6 phút đọc</span><span lang="en">Featured · 6 min read</span></p>
+          <h2 class="nfeat__title tam"><span class="uline"><span lang="vi">Mùa hái 2026 gọi tên</span><span lang="en">The 2026 harvest answers the call</span></span></h2>
+          <p class="nfeat__ex tam"><span lang="vi">Những ngày đầu mùa, cả nhà dậy từ tờ mờ sáng, đi từng hàng cây chọn quả đã chín đỏ. Năm nay quả chín đều hơn, và sân phơi đầy sớm hơn mọi năm.</span><span lang="en">In the first days of the season the family is up before dawn, walking each row for the ripest cherries. This year the fruit ripened more evenly, and the drying yard filled up earlier than ever.</span></p>
+          <span class="jread"><span lang="vi">Đọc bài</span><span lang="en">Read</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+        </div>
+      </a>
+    </article>
+  </div>
+</section>
+
+<section class="nlist" data-light>
+  <div class="wrap">
+    <div class="nbar">
+      <div class="chips lg" role="tablist" aria-label="Chủ đề" id="nChips"><span class="chips__pill" aria-hidden="true"></span><button type="button" class="chip" role="tab" data-v="all" aria-selected="true"><span lang="vi">Tất cả</span><span lang="en">All</span></button><button type="button" class="chip" role="tab" data-v="nong-trai" aria-selected="false"><span lang="vi">Nông trại</span><span lang="en">Farm</span></button><button type="button" class="chip" role="tab" data-v="huong-dan" aria-selected="false"><span lang="vi">Hướng dẫn</span><span lang="en">Guide</span></button><button type="button" class="chip" role="tab" data-v="cau-chuyen" aria-selected="false"><span lang="vi">Câu chuyện</span><span lang="en">Story</span></button><button type="button" class="chip" role="tab" data-v="cua-hang" aria-selected="false"><span lang="vi">Cửa hàng</span><span lang="en">Shop</span></button></div>
+      <p class="nbar__count" id="nCount"></p>
+    </div>
+    <ul class="ngrid" id="nGrid">
+      <li class="ncard" data-cat="huong-dan">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--sky-500)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Hướng dẫn</span><span lang="en">Guide</span></span></div>
+          <p class="ncard__meta"><span class="tam">02/11/2026</span> · <span lang="vi">4 phút đọc</span><span lang="en">4 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Tìm độ xay vừa tay cho phin</span><span lang="en">Finding the grind that fits your phin</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Xay mịn quá thì phin tắc, thô quá thì nhạt. Cách nhà mình thử và chỉnh.</span><span lang="en">Too fine and the phin clogs, too coarse and it is thin. How we test and adjust.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="nong-trai">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--leaf-600)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Nông trại</span><span lang="en">Farm</span></span></div>
+          <p class="ncard__meta"><span class="tam">20/10/2026</span> · <span lang="vi">5 phút đọc</span><span lang="en">5 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Một ngày dài trên sân phơi</span><span lang="en">A long day on the drying yard</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Từ lúc mặt trời lên đến khi gom cà phê vào kho, chuyện một ngày phơi ở Đức An.</span><span lang="en">From sunrise until the coffee is gathered in, a day of drying in Đức An.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="cau-chuyen">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--sun-600)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Câu chuyện</span><span lang="en">Story</span></span></div>
+          <p class="ncard__meta"><span class="tam">08/10/2026</span> · <span lang="vi">6 phút đọc</span><span lang="en">6 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Chiếc máy rang cũ của nhà</span><span lang="en">The old family roaster</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Chiếc máy rang đầu tiên vẫn nằm trong xưởng. Mỗi vết xước là một mùa.</span><span lang="en">The first roaster still sits in the roastery. Every scratch is a season.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="huong-dan">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--sky-500)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Hướng dẫn</span><span lang="en">Guide</span></span></div>
+          <p class="ncard__meta"><span class="tam">28/09/2026</span> · <span lang="vi">5 phút đọc</span><span lang="en">5 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Pha cold brew Robusta tại nhà</span><span lang="en">Making Robusta cold brew at home</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Một hũ thuỷ tinh, một đêm trong tủ lạnh và tỉ lệ 1 : 8.</span><span lang="en">A glass jar, a night in the fridge and a 1 : 8 ratio.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="nong-trai">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--leaf-600)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Nông trại</span><span lang="en">Farm</span></span></div>
+          <p class="ncard__meta"><span class="tam">15/03/2026</span> · <span lang="vi">3 phút đọc</span><span lang="en">3 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Hoa cà phê nở trắng đồi Đức An</span><span lang="en">Coffee blossom whitens the Đức An hills</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Ba ngày trong năm, cả nông trại thơm mùi hoa.</span><span lang="en">Three days a year, the whole farm smells of blossom.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="cua-hang">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--cherry-500)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Cửa hàng</span><span lang="en">Shop</span></span></div>
+          <p class="ncard__meta"><span class="tam">01/09/2026</span> · <span lang="vi">4 phút đọc</span><span lang="en">4 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Cửa hàng đầu tiên đang được xây</span><span lang="en">The first shop is being built</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Những bức tường đầu tiên ở TP. Hồ Chí Minh, và điều nhà mình muốn giữ trong quán.</span><span lang="en">The first walls in Ho Chi Minh City, and what we want the shop to keep.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="cau-chuyen">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--sun-600)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Câu chuyện</span><span lang="en">Story</span></span></div>
+          <p class="ncard__meta"><span class="tam">20/08/2026</span> · <span lang="vi">7 phút đọc</span><span lang="en">7 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Lá thư tay của ông</span><span lang="en">His handwritten letter</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Một trang giấy cũ, vài dòng chữ ông viết về đất và cà phê.</span><span lang="en">An old page, a few lines he wrote about the soil and coffee.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="huong-dan">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--sky-500)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Hướng dẫn</span><span lang="en">Guide</span></span></div>
+          <p class="ncard__meta"><span class="tam">05/08/2026</span> · <span lang="vi">3 phút đọc</span><span lang="en">3 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Drip bag cho buổi sáng vội</span><span lang="en">Drip bags for rushed mornings</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Ba phút, một túi lọc, vẫn là vị cà phê của nhà.</span><span lang="en">Three minutes, one bag, still our coffee.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="nong-trai">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--leaf-600)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Nông trại</span><span lang="en">Farm</span></span></div>
+          <p class="ncard__meta"><span class="tam">18/07/2026</span> · <span lang="vi">4 phút đọc</span><span lang="en">4 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Cây che bóng và đất đỏ</span><span lang="en">Shade trees and red soil</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Vì sao nhà mình giữ lại hàng cây che bóng giữa vườn.</span><span lang="en">Why we keep the shade trees in the orchard.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="huong-dan">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--sky-500)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Hướng dẫn</span><span lang="en">Guide</span></span></div>
+          <p class="ncard__meta"><span class="tam">02/07/2026</span> · <span lang="vi">4 phút đọc</span><span lang="en">4 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Moka pot: nghe tiếng là biết</span><span lang="en">Moka pot: listen for it</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Tiếng sôi phì phì là lúc nhấc ấm khỏi bếp. Mẹo nhỏ cho ly đậm mà không khét.</span><span lang="en">The gurgle tells you when to take it off. A small tip for a strong cup that is not burnt.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="cau-chuyen">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--sun-600)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Câu chuyện</span><span lang="en">Story</span></span></div>
+          <p class="ncard__meta"><span class="tam">10/06/2026</span> · <span lang="vi">6 phút đọc</span><span lang="en">6 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Năm 1997, mẻ rang đầu tiên</span><span lang="en">1997, the first roast</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Con cháu ông kể lại mẻ cà phê đầu tiên rang bằng tay.</span><span lang="en">His children remember the first batch they roasted by hand.</span></p>
+        </a>
+      </li>
+      <li class="ncard" data-cat="cua-hang">
+        <a href="#" class="ncard__link">
+          <div class="ncard__img rv-img"><div class="ph " style="--ph: var(--cherry-500)"><span class="ph__label tam"><span lang="vi">Ảnh bài viết</span><span lang="en">Post image</span></span></div><span class="jchip lg"><span lang="vi">Cửa hàng</span><span lang="en">Shop</span></span></div>
+          <p class="ncard__meta"><span class="tam">25/05/2026</span> · <span lang="vi">3 phút đọc</span><span lang="en">3 min read</span></p>
+          <h3 class="ncard__title tam"><span class="uline"><span lang="vi">Chọn ghế, chọn đèn cho quán</span><span lang="en">Choosing chairs and lights for the shop</span></span></h3>
+          <p class="ncard__ex tam"><span lang="vi">Một quán cà phê nên ấm như gian bếp nhà ông.</span><span lang="en">A café should feel as warm as his kitchen.</span></p>
+        </a>
+      </li>
+    </ul>
+    <div class="nmore" id="nMore">
+      <div class="pill-btn pill-btn--ink"><button type="button" class="pill-btn__label js-more"><span lang="vi">Xem thêm bài</span><span lang="en">More stories</span></button><button type="button" class="pill-btn__icon js-more" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></button></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- 9. Đăng ký + footer -->
+<footer class="footer" data-light>
+  <!-- Màn cuối (học footer của Delta): nền nông trại đứng yên, câu slogan lớn ở giữa;
+       cuộn tiếp thì thẻ kính lớn trượt lên phủ qua, chứa toàn bộ thông tin footer -->
+  <div class="footer__pre" id="footerPre">
+    <div class="footer__bg" aria-hidden="true"><span class="ph__label tam"><span lang="vi">Ảnh hoặc video tạm: vườn cà phê Rừng Lạnh lúc sáng sớm</span><span lang="en">Placeholder photo or video: Rừng Lạnh orchard at dawn</span></span></div>
+    <div class="footer__hero" id="footerHero">
+      <p class="footer__kicker"><span lang="vi">Nông trại Rừng Lạnh · Đức An</span><span lang="en">Rừng Lạnh Farm · Đức An</span></p>
+      <p class="footer__slogan">
+        <span lang="vi"><span class="fw">Học <span class="footer__small">từ</span> đất,</span> <span class="fw">giữ <span class="footer__small">bằng</span> tay</span></span>
+        <span lang="en" class="tam"><span class="fw">Learned <span class="footer__small">from</span> the land,</span> <span class="fw">kept <span class="footer__small">by</span> hand</span></span>
+      </p>
+      <div class="pill-btn footer__btn">
+        <a href="index.html#ghe-shop" class="pill-btn__label"><span lang="vi">Ghé nông trại</span><span lang="en">Visit the farm</span></a>
+        <a href="index.html#ghe-shop" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thẻ kính lớn (học footer Delta): lúc đầu tràn mép và trượt chậm hơn tốc độ cuộn,
+       rồi co lại cách mép, bo góc và bắt kịp nội dung -->
+  <div class="footer__panel" id="footerPanel">
+    <span class="footer__glass lg" id="footerGlass" aria-hidden="true"></span>
+    <div class="footer__inner">
+      <a href="index.html" class="logo footer__logo" aria-label="Ông Cao Coffee"><span class="logo__mark" aria-hidden="true">ÔC</span><span class="logo__word">Ông Cao Coffee</span></a>
+
+      <div class="fcol fcol--a">
+        <h3 class="fcol__h"><span lang="vi">Về Ông Cao</span><span lang="en">About Ông Cao</span></h3>
+        <a href="lich-su.html"><span lang="vi">Chuyện ông Cao</span><span lang="en">Mr. Cao's story</span></a>
+        <a href="ve-ong-cao.html"><span lang="vi">Về thương hiệu</span><span lang="en">About the brand</span></a>
+        <a href="van-hoa.html"><span lang="vi">Văn hoá cà phê</span><span lang="en">Coffee culture</span></a>
+        <span class="fcol__sub">
+          <a href="van-hoa.html#pha"><span lang="vi">Hướng dẫn pha</span><span lang="en">Brewing guide</span></a>
+          <a href="mot-nam.html"><span lang="vi">Một năm ở Đức An</span><span lang="en">A year in Đức An</span></a>
+        </span>
+      </div>
+      <div class="fcol fcol--b">
+        <h3 class="fcol__h"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></h3>
+        <a href="san-pham.html">Signature</a>
+        <a href="san-pham.html"><span lang="vi">Hạt rang</span><span lang="en">Roasted beans</span></a>
+        <a href="san-pham.html"><span lang="vi">Cà phê bột</span><span lang="en">Ground coffee</span></a>
+        <a href="san-pham.html"><span lang="vi">Hạt nhân</span><span lang="en">Green beans</span></a>
+      </div>
+      <nav class="fcol fcol--c" aria-label="Footer">
+        <a href="san-pham.html" class="fcol__big"><span lang="vi">Mua cà phê</span><span lang="en">Shop coffee</span></a>
+        <a href="ve-ong-cao.html#noi-chon" class="fcol__big"><span lang="vi">Ghé thăm</span><span lang="en">Visit us</span></a>
+        <a href="nhat-ky.html" class="fcol__big"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+        <a href="#signup" class="fcol__big"><span lang="vi">Nhận thư mỗi mùa</span><span lang="en">Seasonal letter</span></a>
+      </nav>
+
+      <dl class="footer__contact">
+        <div><dt>Hotline</dt><dd class="tam">0___ ___ ___</dd></div>
+        <div><dt>Email</dt><dd class="tam">xinchao@ongcao.vn</dd></div>
+        <div><dt><span lang="vi">Nông trại</span><span lang="en">Farm</span></dt><dd><span lang="vi">Xã Đức An, tỉnh Lâm Đồng</span><span lang="en">Đức An Commune, Lâm Đồng</span></dd></div>
+        <p class="footer__motto"><span lang="vi">Nắng gió dưỡng hạt, tay người nối vị.</span><span lang="en">Sun and wind nurture the bean, hands carry on its taste.</span></p>
+      </dl>
+
+      <ul class="social" aria-label="Mạng xã hội">
+        <li><a href="https://facebook.com/OngCaoCoffee" class="social__a" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5h2.5V5h-2.5C12 5 10.5 6.6 10.5 9v2H8v3.5h2.5V21H14v-6.5h2.6l.4-3.5h-3V9.4c0-.6.2-.9.5-.9z"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.9" cy="7.1" r=".6" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4v10.6a3.1 3.1 0 1 1-3.1-3.1"/><path d="M13.5 4c.4 2.4 2 4 4.5 4.3"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4-2.5z" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Zalo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-4.7 0-8.5 3.1-8.5 7 0 2.1 1.1 4 2.9 5.3L5.8 20l3.6-1.8c.8.2 1.7.3 2.6.3 4.7 0 8.5-3.1 8.5-7s-3.8-7-8.5-7z"/><path d="M9.3 9.5h4.2l-4.2 4.6h4.4"/></svg></a></li>
+      </ul>
+
+      <div class="fcol fcol--d">
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+        <a href="#" class="tam"><span lang="vi">Đặt hàng cho quán và văn phòng</span><span lang="en">Orders for cafés and offices</span></a>
+        <a href="https://facebook.com/OngCaoCoffee" target="_blank" rel="noopener"><span lang="vi">Nhắn tin cho nhà mình</span><span lang="en">Message the family</span></a>
+      </div>
+
+      <div class="footer__signup">
+        <form class="signup" id="signup" novalidate>
+      <div>
+        <h3 class="signup__title"><span lang="vi">Nhận thư mỗi mùa về</span><span lang="en">Get a letter each new season</span></h3>
+        
+      </div>
+      <div class="signup__field">
+        <label for="email" class="sr-only">Email</label>
+        <input id="email" type="email" placeholder="ten@email.com" autocomplete="email">
+        <button type="submit" class="btn btn--buy"><span lang="vi">Đăng ký</span><span lang="en">Sign up</span></button>
+        <p class="signup__msg" id="signupMsg" role="status"></p>
+      </div>
+    </form>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <span>Ông Cao Coffee © 2026</span>
+      <span class="footer__bar-links">
+        <a href="#"><span lang="vi">Chính sách bảo mật</span><span lang="en">Privacy policy</span></a>
+        <a href="#"><span lang="vi">Điều khoản sử dụng</span><span lang="en">Terms of use</span></a>
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+      </span>
+      <span class="tam"><span lang="vi">Tên doanh nghiệp, mã số thuế: bổ sung sau</span><span lang="en">Company name, tax ID: to be added</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/main.js?v=90"></script>
+<script src="assets/pages.js?v=3"></script>
+</body>
+</html>

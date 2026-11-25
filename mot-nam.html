@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bản thử: chặn Google lập chỉ mục. Xoá dòng dưới khi ra mắt chính thức. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Một năm trên đất Đức An | Ông Cao Coffee</title>
+<meta name="description" content="Một năm của cây cà phê ở Nông trại Rừng Lạnh, Đức An: hoa nở, nuôi quả, chín và hái, phơi, rang.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Dancing+Script:wght@500..700&family=Fraunces:opsz,wght@9..144,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=91">
+<link rel="stylesheet" href="assets/pages.css?v=7">
+<script>
+  document.documentElement.classList.add('js');
+  try { var l = localStorage.getItem('ongcao-lang'); if (l === 'en' || l === 'vi') document.documentElement.lang = l; } catch (e) {}
+  try { if (sessionStorage.getItem('oc-draft-closed')) document.documentElement.classList.add('no-draft'); } catch (e) {}
+  // Chuyển trang: bỏ qua hiệu ứng khi tab đang ẩn để trang không bị kẹt ở màn che
+  addEventListener('pagereveal', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+  addEventListener('pageswap', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+</script>
+</head>
+<body class="page" data-page="mot-nam">
+
+<a class="skip" href="#main"><span lang="vi">Bỏ qua tới nội dung</span><span lang="en">Skip to content</span></a>
+
+<div class="draft-note" id="draftNote" role="note">
+  <p>
+    <span lang="vi">Bản thử. Chữ gạch chân đứt nét là nội dung tạm, sẽ thay bằng thông tin thật.</span>
+    <span lang="en">Draft. Dashed-underline text is placeholder content, to be replaced with real details.</span>
+  </p>
+  <button type="button" class="draft-note__close" id="draftClose" aria-label="Đóng ghi chú">×</button>
+</div>
+
+<!-- 0. Header -->
+<header class="site-header" id="header">
+  <div class="wrap header__inner">
+    <a href="index.html" class="logo" aria-label="Ông Cao Coffee">
+      <span class="logo__mark" aria-hidden="true">ÔC</span>
+      <span class="logo__word">Ông Cao</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Chính">
+      <a href="lich-su.html" data-page="lich-su"><span lang="vi">Lịch sử</span><span lang="en">History</span></a>
+      <a href="ve-ong-cao.html" data-page="ve-ong-cao"><span lang="vi">Về Ông Cao</span><span lang="en">About</span></a>
+      <a href="san-pham.html" data-page="san-pham"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></a>
+      <a href="van-hoa.html" data-page="van-hoa"><span lang="vi">Văn hoá</span><span lang="en">Culture</span></a>
+      <a href="mot-nam.html" data-page="mot-nam"><span lang="vi">Một năm</span><span lang="en">The year</span></a>
+      <a href="nhat-ky.html" data-page="nhat-ky"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang" role="group" aria-label="Ngôn ngữ / Language">
+        <button type="button" data-set-lang="vi" aria-pressed="true">VI</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="san-pham.html" class="cart" id="cart" aria-live="polite">
+        <span lang="vi">Giỏ</span><span lang="en">Cart</span>
+        <span class="cart__count" id="cartCount">0</span>
+      </a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
+        <span lang="vi">Menu</span><span lang="en">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="phero yhero" data-reveal data-light>
+  <div class="wrap phero__inner">
+    <p class="kicker"><span lang="vi">Mùa vụ ở Nông trại Rừng Lạnh</span><span lang="en">Seasons at Rừng Lạnh Farm</span></p>
+    <h1 class="bigt "><span lang="vi"><span class="bw">Một năm</span> <span class="bw"><span class="bigt__s">trên đất</span> Đức An</span></span><span lang="en"><span class="bw">A year</span> <span class="bw"><span class="bigt__s">on the land of</span> Đức An</span></span></h1>
+    <p class="phero__lead"><span lang="vi">Cà phê không chỉ có mùa hái. Đây là một năm của cây cà phê ở Đức An, từ những ngày hoa trắng nở kín đồi đến mẻ rang trong xưởng nhỏ của nhà.</span><span lang="en">Coffee is more than harvest time. This is a year in the life of a coffee tree in Đức An, from the days white blossom covers the hills to the roast in our little roastery.</span></p>
+    <p class="ylive phero__extra" id="yLive"><span class="live-wave live-wave--sm" aria-hidden="true"><svg viewBox="0 0 44 22"><path d="M2 11H42"/></svg></span><span class="ylive__text"></span></p>
+  </div>
+</section>
+
+<section class="ycal" id="ycal" aria-label="Lịch mùa vụ / Seasonal calendar">
+  <div class="wrap">
+    <div class="ycal__box">
+      <p class="kicker" style="margin-bottom: 22px"><span lang="vi">Lịch mùa vụ · bấm vào giai đoạn để xem</span><span lang="en">Seasonal calendar · tap a stage to read more</span></p>
+      <div class="ycal__grid">
+        <span class="ycal__m" style="grid-row: 1; grid-column: 2"><span lang="vi">T1</span><span lang="en">Jan</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 3"><span lang="vi">T2</span><span lang="en">Feb</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 4"><span lang="vi">T3</span><span lang="en">Mar</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 5"><span lang="vi">T4</span><span lang="en">Apr</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 6"><span lang="vi">T5</span><span lang="en">May</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 7"><span lang="vi">T6</span><span lang="en">Jun</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 8"><span lang="vi">T7</span><span lang="en">Jul</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 9"><span lang="vi">T8</span><span lang="en">Aug</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 10"><span lang="vi">T9</span><span lang="en">Sep</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 11"><span lang="vi">T10</span><span lang="en">Oct</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 12"><span lang="vi">T11</span><span lang="en">Nov</span></span><span class="ycal__m" style="grid-row: 1; grid-column: 13"><span lang="vi">T12</span><span lang="en">Dec</span></span>
+          <button type="button" class="ycal__label" style="grid-row: 2; --c: var(--leaf-500)"><i></i><span lang="vi">Hoa nở</span><span lang="en">Blossom</span></button>
+          <button type="button" class="ycal__label" style="grid-row: 3; --c: var(--leaf-700)"><i></i><span lang="vi">Nuôi quả</span><span lang="en">Growing</span></button>
+          <button type="button" class="ycal__label" style="grid-row: 4; --c: var(--cherry-600)"><i></i><span lang="vi">Chín & hái</span><span lang="en">Harvest</span></button>
+          <button type="button" class="ycal__label" style="grid-row: 5; --c: var(--sun-600)"><i></i><span lang="vi">Phơi</span><span lang="en">Drying</span></button>
+          <button type="button" class="ycal__label" style="grid-row: 6; --c: var(--sky-600)"><i></i><span lang="vi">Rang</span><span lang="en">Roasting</span></button>
+        <div class="ycal__today" style="grid-row: 1 / 7"><span><span lang="vi">Hôm nay</span><span lang="en">Today</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ystack-sec" data-light>
+  <div class="wrap ystack">
+    <article class="ycard" id="giai-doan-1" style="--c: var(--leaf-500); --i: 0" aria-labelledby="yc0">
+      <div class="ph ycard__bg" style="--ph: var(--leaf-500)" data-py="36"><span class="ph__label tam"><span lang="vi">Cành trắng hoa</span><span lang="en">Branches in white</span></span></div>
+      <div class="ycard__in">
+        <div>
+          <div class="ycard__top">
+            <span class="ycard__ring"><svg viewBox="0 0 48 48" class="ico ico--bloom" aria-hidden="true">
+                <g class="petals">
+                  <g><ellipse class="petal" cx="24" cy="14.5" rx="3.6" ry="6.6"/></g>
+                  <g transform="rotate(72 24 24)"><ellipse class="petal" cx="24" cy="14.5" rx="3.6" ry="6.6"/></g>
+                  <g transform="rotate(144 24 24)"><ellipse class="petal" cx="24" cy="14.5" rx="3.6" ry="6.6"/></g>
+                  <g transform="rotate(216 24 24)"><ellipse class="petal" cx="24" cy="14.5" rx="3.6" ry="6.6"/></g>
+                  <g transform="rotate(288 24 24)"><ellipse class="petal" cx="24" cy="14.5" rx="3.6" ry="6.6"/></g>
+                </g>
+                <circle class="core" cx="24" cy="24" r="2.6"/>
+              </svg></span>
+            <div class="ycard__meta">
+              <p class="kicker"><span lang="vi">Giai đoạn 01 · tháng 2–3</span><span lang="en">Stage 01 · Feb–Mar</span></p>
+              <p class="ycard__live" hidden><span class="live-wave live-wave--xs" aria-hidden="true"><svg viewBox="0 0 44 22"><path d="M2 11H42"/></svg></span><span lang="vi">Đang diễn ra</span><span lang="en">Live now</span></p>
+            </div>
+          </div>
+          <h2 class="ycard__title" id="yc0"><span lang="vi">Hoa nở</span><span lang="en">Blossom</span></h2>
+          <p class="ycard__lead tam"><span lang="vi">Giữa mùa khô, sau những đợt tưới cây, hoa trắng nở kín cành và thơm khắp nông trại trong vài ngày, như lời chào của mùa mới.</span><span lang="en">In the middle of the dry season, after the watering of the trees, white blossom covers every branch and perfumes the farm for a few days, a greeting from the new season.</span></p>
+        </div>
+        <div class="ycard__facts"><div class="yfact lg"><small><span lang="vi">Khi nào</span><span lang="en">When</span></small><b><span lang="vi">Tháng 2–3</span><span lang="en">February–March</span></b></div><div class="yfact lg"><small><span lang="vi">Nhịp</span><span lang="en">Rhythm</span></small><b class="tam"><span lang="vi">Hoa nở chừng 3–4 ngày</span><span lang="en">Blossom lasts about 3–4 days</span></b></div><div class="yfact lg"><small><span lang="vi">Việc của nhà</span><span lang="en">Family work</span></small><b class="tam"><span lang="vi">Tưới gốc, đón ong về vườn</span><span lang="en">Watering, welcoming the bees</span></b></div></div>
+      </div>
+    </article>
+    <article class="ycard" id="giai-doan-2" style="--c: var(--leaf-700); --i: 1" aria-labelledby="yc1">
+      <div class="ph ycard__bg" style="--ph: var(--leaf-700)" data-py="36"><span class="ph__label tam"><span lang="vi">Chùm quả xanh</span><span lang="en">Green cherries in clusters</span></span></div>
+      <div class="ycard__in">
+        <div>
+          <div class="ycard__top">
+            <span class="ycard__ring"><svg viewBox="0 0 48 48" class="ico ico--grow" aria-hidden="true">
+                <circle class="heal" cx="22" cy="28" r="10"/>
+                <path d="M9 40C17 32 25 23 38 10"/>
+                <path class="leaf" d="M30 16c4-5 9-5 11-4-1 3-5 7-11 4z"/>
+                <circle class="berry" cx="19.5" cy="24" r="3.8"/>
+                <circle class="berry" cx="27" cy="28.5" r="3.8"/>
+                <circle class="berry" cx="19" cy="32.5" r="3.2"/>
+                <path class="plus" d="M37 29v4M35 31h4"/>
+              </svg></span>
+            <div class="ycard__meta">
+              <p class="kicker"><span lang="vi">Giai đoạn 02 · tháng 4–10</span><span lang="en">Stage 02 · Apr–Oct</span></p>
+              <p class="ycard__live" hidden><span class="live-wave live-wave--xs" aria-hidden="true"><svg viewBox="0 0 44 22"><path d="M2 11H42"/></svg></span><span lang="vi">Đang diễn ra</span><span lang="en">Live now</span></p>
+            </div>
+          </div>
+          <h2 class="ycard__title" id="yc1"><span lang="vi">Nuôi quả</span><span lang="en">Growing</span></h2>
+          <p class="ycard__lead tam"><span lang="vi">Mùa mưa, quả căng dần trên cành. Cả nhà làm cỏ, bón phân, tỉa cành để cây giữ sức, và chăm lúa, ngô, khoai bên cạnh.</span><span lang="en">In the rainy season the cherries fill out. The family weeds, feeds and prunes so the trees keep their strength, and tends the rice, corn and sweet potato alongside.</span></p>
+        </div>
+        <div class="ycard__facts"><div class="yfact lg"><small><span lang="vi">Khi nào</span><span lang="en">When</span></small><b><span lang="vi">Tháng 4–10, mùa mưa</span><span lang="en">April–October, rainy season</span></b></div><div class="yfact lg"><small><span lang="vi">Nhịp</span><span lang="en">Rhythm</span></small><b class="tam"><span lang="vi">Quả lớn chậm suốt bảy tháng</span><span lang="en">Seven slow months of growth</span></b></div><div class="yfact lg"><small><span lang="vi">Việc của nhà</span><span lang="en">Family work</span></small><b><span lang="vi">Làm cỏ, bón phân, tỉa cành</span><span lang="en">Weeding, feeding, pruning</span></b></div></div>
+      </div>
+    </article>
+    <article class="ycard" id="giai-doan-3" style="--c: var(--cherry-600); --i: 2" aria-labelledby="yc2">
+      <div class="ph ycard__bg" style="--ph: var(--cherry-600)" data-py="36"><span class="ph__label tam"><span lang="vi">Quả đỏ trên cành</span><span lang="en">Ripe red on the branch</span></span></div>
+      <div class="ycard__in">
+        <div>
+          <div class="ycard__top">
+            <span class="ycard__ring"><svg viewBox="0 0 48 48" class="ico ico--harvest" aria-hidden="true">
+                <circle class="drop" cx="19" cy="21" r="2.8"/>
+                <circle class="drop" cx="24.5" cy="20" r="2.8"/>
+                <circle class="drop" cx="30" cy="21.5" r="2.6"/>
+                <g class="basket">
+                  <path d="M11 25h26l-3 14H14z"/>
+                  <path d="M12.4 31.5h23.2M17 25l1.6 14M24 25v14M31 25l-1.6 14"/>
+                </g>
+              </svg></span>
+            <div class="ycard__meta">
+              <p class="kicker"><span lang="vi">Giai đoạn 03 · tháng 11–1</span><span lang="en">Stage 03 · Nov–Jan</span></p>
+              <p class="ycard__live" hidden><span class="live-wave live-wave--xs" aria-hidden="true"><svg viewBox="0 0 44 22"><path d="M2 11H42"/></svg></span><span lang="vi">Đang diễn ra</span><span lang="en">Live now</span></p>
+            </div>
+          </div>
+          <h2 class="ycard__title" id="yc2"><span lang="vi">Chín & hái</span><span lang="en">Harvest</span></h2>
+          <p class="ycard__lead tam"><span lang="vi">Quả dần đổi sang đỏ thắm. Cả nhà chỉ hái quả đã chín, đi nhiều lượt trên mỗi cây, như đợi từng quả tự chín đến đúng lúc.</span><span lang="en">The cherries turn a deep red. The family picks only what is ripe, going over each tree several times, as if waiting for every cherry to finish ripening in its own time.</span></p>
+        </div>
+        <div class="ycard__facts"><div class="yfact lg"><small><span lang="vi">Khi nào</span><span lang="en">When</span></small><b><span lang="vi">Tháng 11 – tháng 1</span><span lang="en">November–January</span></b></div><div class="yfact lg"><small><span lang="vi">Nhịp</span><span lang="en">Rhythm</span></small><b><span lang="vi">Hái nhiều lượt trên mỗi cây</span><span lang="en">Several passes on every tree</span></b></div><div class="yfact lg"><small><span lang="vi">Việc của nhà</span><span lang="en">Family work</span></small><b><span lang="vi">Chỉ hái quả chín đỏ</span><span lang="en">Picking only ripe red cherries</span></b></div></div>
+      </div>
+    </article>
+    <article class="ycard" id="giai-doan-4" style="--c: var(--sun-600); --i: 3" aria-labelledby="yc3">
+      <div class="ph ycard__bg" style="--ph: var(--sun-600)" data-py="36"><span class="ph__label tam"><span lang="vi">Sân phơi lúc bình minh</span><span lang="en">The yard at dawn</span></span></div>
+      <div class="ycard__in">
+        <div>
+          <div class="ycard__top">
+            <span class="ycard__ring"><svg viewBox="0 0 48 48" class="ico ico--dry" aria-hidden="true">
+                <g class="rays">
+                  <path d="M24 6.5v3M24 24.5v3M12.5 18h3M32.5 18h3M15.9 9.9l2.1 2.1M30 24l2.1 2.1M15.9 26.1l2.1-2.1M30 12l2.1-2.1"/>
+                </g>
+                <circle class="sun" cx="24" cy="18" r="5"/>
+                <path class="wave" d="M8 35c4-3 8-3 12 0s8 3 12 0 8-3 8-3"/>
+                <path class="wave wave--2" d="M8 41c4-3 8-3 12 0s8 3 12 0 8-3 8-3"/>
+              </svg></span>
+            <div class="ycard__meta">
+              <p class="kicker"><span lang="vi">Giai đoạn 04 · tháng 12–2</span><span lang="en">Stage 04 · Dec–Feb</span></p>
+              <p class="ycard__live" hidden><span class="live-wave live-wave--xs" aria-hidden="true"><svg viewBox="0 0 44 22"><path d="M2 11H42"/></svg></span><span lang="vi">Đang diễn ra</span><span lang="en">Live now</span></p>
+            </div>
+          </div>
+          <h2 class="ycard__title" id="yc3"><span lang="vi">Phơi</span><span lang="en">Drying</span></h2>
+          <p class="ycard__lead tam"><span lang="vi">Quả vừa hái được trải đều trên sân phơi, dưới nắng và gió cao nguyên. Mỗi ngày được đảo bằng tay cho đến khi khô đều, không vội.</span><span lang="en">Freshly picked cherries are spread across the yard under the highland sun and wind, and turned by hand each day until they dry evenly, with no rush.</span></p>
+        </div>
+        <div class="ycard__facts"><div class="yfact lg"><small><span lang="vi">Khi nào</span><span lang="en">When</span></small><b><span lang="vi">Tháng 12 – tháng 2</span><span lang="en">December–February</span></b></div><div class="yfact lg"><small><span lang="vi">Nhịp</span><span lang="en">Rhythm</span></small><b class="tam"><span lang="vi">Phơi khoảng __ ngày</span><span lang="en">About __ days in the sun</span></b></div><div class="yfact lg"><small><span lang="vi">Việc của nhà</span><span lang="en">Family work</span></small><b><span lang="vi">Đảo bằng tay mỗi ngày</span><span lang="en">Turned by hand every day</span></b></div></div>
+      </div>
+    </article>
+    <article class="ycard" id="giai-doan-5" style="--c: var(--sky-600); --i: 4" aria-labelledby="yc4">
+      <div class="ph ycard__bg" style="--ph: var(--sky-600)" data-py="36"><span class="ph__label tam"><span lang="vi">Mẻ rang buổi sáng</span><span lang="en">The morning roast</span></span></div>
+      <div class="ycard__in">
+        <div>
+          <div class="ycard__top">
+            <span class="ycard__ring"><svg viewBox="0 0 48 48" class="ico ico--roast" aria-hidden="true">
+                <path class="steam" d="M18 15c-2 3 2 5 0 8"/>
+                <path class="steam" d="M24 13c-2 3 2 5 0 8"/>
+                <path class="steam" d="M30 15c-2 3 2 5 0 8"/>
+                <g class="bean">
+                  <ellipse cx="24" cy="34" rx="7.5" ry="9.5" transform="rotate(28 24 34)"/>
+                  <path d="M27.2 25.8c-4.6 3.6-1.8 9.2-6.4 16.4"/>
+                </g>
+              </svg></span>
+            <div class="ycard__meta">
+              <p class="kicker"><span lang="vi">Giai đoạn 05 · quanh năm</span><span lang="en">Stage 05 · all year</span></p>
+              <p class="ycard__live" hidden><span class="live-wave live-wave--xs" aria-hidden="true"><svg viewBox="0 0 44 22"><path d="M2 11H42"/></svg></span><span lang="vi">Đang diễn ra</span><span lang="en">Live now</span></p>
+            </div>
+          </div>
+          <h2 class="ycard__title" id="yc4"><span lang="vi">Rang</span><span lang="en">Roasting</span></h2>
+          <p class="ycard__lead tam"><span lang="vi">Hạt khô được tách vỏ, rang từng mẻ nhỏ trong xưởng của gia đình quanh năm, rồi đóng gói khi mùi thơm vừa lên.</span><span lang="en">Dried beans are hulled and roasted in small batches in the family roastery all year, then packed while the aroma is at its peak.</span></p>
+        </div>
+        <div class="ycard__facts"><div class="yfact lg"><small><span lang="vi">Khi nào</span><span lang="en">When</span></small><b><span lang="vi">Quanh năm</span><span lang="en">All year</span></b></div><div class="yfact lg"><small><span lang="vi">Nhịp</span><span lang="en">Rhythm</span></small><b class="tam"><span lang="vi">Mỗi mẻ khoảng __ kg</span><span lang="en">About __ kg per batch</span></b></div><div class="yfact lg"><small><span lang="vi">Việc của nhà</span><span lang="en">Family work</span></small><b><span lang="vi">Đóng gói khi hương vừa lên</span><span lang="en">Packed at the peak of aroma</span></b></div></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="pcta" data-reveal>
+  <div class="wrap">
+    <h2 class="bigt "><span lang="vi"><span class="bw">Theo dõi</span> <span class="bw"><span class="bigt__s">mùa</span> vụ</span></span><span lang="en"><span class="bw">Follow</span> <span class="bw"><span class="bigt__s">the</span> seasons</span></span></h2>
+    <p class="pcta__lead"><span lang="vi">Mỗi mùa, nhà mình gửi một lá thư kể chuyện nông trại: hoa nở, quả chín, mẻ rang mới.</span><span lang="en">Each season we send a letter from the farm: the blossom, the harvest, the new roast.</span></p>
+    <div class="pcta__btns"><div class="pill-btn pill-btn--ink"><a href="nhat-ky.html" class="pill-btn__label"><span lang="vi">Đọc nhật ký</span><span lang="en">Read the journal</span></a><a href="nhat-ky.html" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div><div class="pill-btn pill-btn--light"><a href="#signup" class="pill-btn__label"><span lang="vi">Nhận thư mỗi mùa</span><span lang="en">Get the seasonal letter</span></a><a href="#signup" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div></div>
+  </div>
+</section>
+</main>
+
+<!-- 9. Đăng ký + footer -->
+<footer class="footer" data-light>
+  <!-- Màn cuối (học footer của Delta): nền nông trại đứng yên, câu slogan lớn ở giữa;
+       cuộn tiếp thì thẻ kính lớn trượt lên phủ qua, chứa toàn bộ thông tin footer -->
+  <div class="footer__pre" id="footerPre">
+    <div class="footer__bg" aria-hidden="true"><span class="ph__label tam"><span lang="vi">Ảnh hoặc video tạm: vườn cà phê Rừng Lạnh lúc sáng sớm</span><span lang="en">Placeholder photo or video: Rừng Lạnh orchard at dawn</span></span></div>
+    <div class="footer__hero" id="footerHero">
+      <p class="footer__kicker"><span lang="vi">Nông trại Rừng Lạnh · Đức An</span><span lang="en">Rừng Lạnh Farm · Đức An</span></p>
+      <p class="footer__slogan">
+        <span lang="vi"><span class="fw">Học <span class="footer__small">từ</span> đất,</span> <span class="fw">giữ <span class="footer__small">bằng</span> tay</span></span>
+        <span lang="en" class="tam"><span class="fw">Learned <span class="footer__small">from</span> the land,</span> <span class="fw">kept <span class="footer__small">by</span> hand</span></span>
+      </p>
+      <div class="pill-btn footer__btn">
+        <a href="index.html#ghe-shop" class="pill-btn__label"><span lang="vi">Ghé nông trại</span><span lang="en">Visit the farm</span></a>
+        <a href="index.html#ghe-shop" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thẻ kính lớn (học footer Delta): lúc đầu tràn mép và trượt chậm hơn tốc độ cuộn,
+       rồi co lại cách mép, bo góc và bắt kịp nội dung -->
+  <div class="footer__panel" id="footerPanel">
+    <span class="footer__glass lg" id="footerGlass" aria-hidden="true"></span>
+    <div class="footer__inner">
+      <a href="index.html" class="logo footer__logo" aria-label="Ông Cao Coffee"><span class="logo__mark" aria-hidden="true">ÔC</span><span class="logo__word">Ông Cao Coffee</span></a>
+
+      <div class="fcol fcol--a">
+        <h3 class="fcol__h"><span lang="vi">Về Ông Cao</span><span lang="en">About Ông Cao</span></h3>
+        <a href="lich-su.html"><span lang="vi">Chuyện ông Cao</span><span lang="en">Mr. Cao's story</span></a>
+        <a href="ve-ong-cao.html"><span lang="vi">Về thương hiệu</span><span lang="en">About the brand</span></a>
+        <a href="van-hoa.html"><span lang="vi">Văn hoá cà phê</span><span lang="en">Coffee culture</span></a>
+        <span class="fcol__sub">
+          <a href="van-hoa.html#pha"><span lang="vi">Hướng dẫn pha</span><span lang="en">Brewing guide</span></a>
+          <a href="mot-nam.html"><span lang="vi">Một năm ở Đức An</span><span lang="en">A year in Đức An</span></a>
+        </span>
+      </div>
+      <div class="fcol fcol--b">
+        <h3 class="fcol__h"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></h3>
+        <a href="san-pham.html">Signature</a>
+        <a href="san-pham.html"><span lang="vi">Hạt rang</span><span lang="en">Roasted beans</span></a>
+        <a href="san-pham.html"><span lang="vi">Cà phê bột</span><span lang="en">Ground coffee</span></a>
+        <a href="san-pham.html"><span lang="vi">Hạt nhân</span><span lang="en">Green beans</span></a>
+      </div>
+      <nav class="fcol fcol--c" aria-label="Footer">
+        <a href="san-pham.html" class="fcol__big"><span lang="vi">Mua cà phê</span><span lang="en">Shop coffee</span></a>
+        <a href="ve-ong-cao.html#noi-chon" class="fcol__big"><span lang="vi">Ghé thăm</span><span lang="en">Visit us</span></a>
+        <a href="nhat-ky.html" class="fcol__big"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+        <a href="#signup" class="fcol__big"><span lang="vi">Nhận thư mỗi mùa</span><span lang="en">Seasonal letter</span></a>
+      </nav>
+
+      <dl class="footer__contact">
+        <div><dt>Hotline</dt><dd class="tam">0___ ___ ___</dd></div>
+        <div><dt>Email</dt><dd class="tam">xinchao@ongcao.vn</dd></div>
+        <div><dt><span lang="vi">Nông trại</span><span lang="en">Farm</span></dt><dd><span lang="vi">Xã Đức An, tỉnh Lâm Đồng</span><span lang="en">Đức An Commune, Lâm Đồng</span></dd></div>
+        <p class="footer__motto"><span lang="vi">Nắng gió dưỡng hạt, tay người nối vị.</span><span lang="en">Sun and wind nurture the bean, hands carry on its taste.</span></p>
+      </dl>
+
+      <ul class="social" aria-label="Mạng xã hội">
+        <li><a href="https://facebook.com/OngCaoCoffee" class="social__a" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5h2.5V5h-2.5C12 5 10.5 6.6 10.5 9v2H8v3.5h2.5V21H14v-6.5h2.6l.4-3.5h-3V9.4c0-.6.2-.9.5-.9z"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.9" cy="7.1" r=".6" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4v10.6a3.1 3.1 0 1 1-3.1-3.1"/><path d="M13.5 4c.4 2.4 2 4 4.5 4.3"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4-2.5z" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Zalo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-4.7 0-8.5 3.1-8.5 7 0 2.1 1.1 4 2.9 5.3L5.8 20l3.6-1.8c.8.2 1.7.3 2.6.3 4.7 0 8.5-3.1 8.5-7s-3.8-7-8.5-7z"/><path d="M9.3 9.5h4.2l-4.2 4.6h4.4"/></svg></a></li>
+      </ul>
+
+      <div class="fcol fcol--d">
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+        <a href="#" class="tam"><span lang="vi">Đặt hàng cho quán và văn phòng</span><span lang="en">Orders for cafés and offices</span></a>
+        <a href="https://facebook.com/OngCaoCoffee" target="_blank" rel="noopener"><span lang="vi">Nhắn tin cho nhà mình</span><span lang="en">Message the family</span></a>
+      </div>
+
+      <div class="footer__signup">
+        <form class="signup" id="signup" novalidate>
+      <div>
+        <h3 class="signup__title"><span lang="vi">Nhận thư mỗi mùa về</span><span lang="en">Get a letter each new season</span></h3>
+        
+      </div>
+      <div class="signup__field">
+        <label for="email" class="sr-only">Email</label>
+        <input id="email" type="email" placeholder="ten@email.com" autocomplete="email">
+        <button type="submit" class="btn btn--buy"><span lang="vi">Đăng ký</span><span lang="en">Sign up</span></button>
+        <p class="signup__msg" id="signupMsg" role="status"></p>
+      </div>
+    </form>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <span>Ông Cao Coffee © 2026</span>
+      <span class="footer__bar-links">
+        <a href="#"><span lang="vi">Chính sách bảo mật</span><span lang="en">Privacy policy</span></a>
+        <a href="#"><span lang="vi">Điều khoản sử dụng</span><span lang="en">Terms of use</span></a>
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+      </span>
+      <span class="tam"><span lang="vi">Tên doanh nghiệp, mã số thuế: bổ sung sau</span><span lang="en">Company name, tax ID: to be added</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/main.js?v=90"></script>
+<script src="assets/pages.js?v=3"></script>
+</body>
+</html>

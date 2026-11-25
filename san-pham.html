@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bản thử: chặn Google lập chỉ mục. Xoá dòng dưới khi ra mắt chính thức. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Sản phẩm | Ông Cao Coffee</title>
+<meta name="description" content="Cà phê Robusta Ông Cao: hạt rang, bột pha phin, bột pha máy, drip bag và hạt nhân từ Đức An.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Dancing+Script:wght@500..700&family=Fraunces:opsz,wght@9..144,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=91">
+<link rel="stylesheet" href="assets/pages.css?v=7">
+<script>
+  document.documentElement.classList.add('js');
+  try { var l = localStorage.getItem('ongcao-lang'); if (l === 'en' || l === 'vi') document.documentElement.lang = l; } catch (e) {}
+  try { if (sessionStorage.getItem('oc-draft-closed')) document.documentElement.classList.add('no-draft'); } catch (e) {}
+  // Chuyển trang: bỏ qua hiệu ứng khi tab đang ẩn để trang không bị kẹt ở màn che
+  addEventListener('pagereveal', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+  addEventListener('pageswap', function (e) { if (e.viewTransition && document.visibilityState === 'hidden') e.viewTransition.skipTransition(); });
+</script>
+</head>
+<body class="page" data-page="san-pham">
+
+<a class="skip" href="#main"><span lang="vi">Bỏ qua tới nội dung</span><span lang="en">Skip to content</span></a>
+
+<div class="draft-note" id="draftNote" role="note">
+  <p>
+    <span lang="vi">Bản thử. Chữ gạch chân đứt nét là nội dung tạm, sẽ thay bằng thông tin thật.</span>
+    <span lang="en">Draft. Dashed-underline text is placeholder content, to be replaced with real details.</span>
+  </p>
+  <button type="button" class="draft-note__close" id="draftClose" aria-label="Đóng ghi chú">×</button>
+</div>
+
+<!-- 0. Header -->
+<header class="site-header" id="header">
+  <div class="wrap header__inner">
+    <a href="index.html" class="logo" aria-label="Ông Cao Coffee">
+      <span class="logo__mark" aria-hidden="true">ÔC</span>
+      <span class="logo__word">Ông Cao</span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Chính">
+      <a href="lich-su.html" data-page="lich-su"><span lang="vi">Lịch sử</span><span lang="en">History</span></a>
+      <a href="ve-ong-cao.html" data-page="ve-ong-cao"><span lang="vi">Về Ông Cao</span><span lang="en">About</span></a>
+      <a href="san-pham.html" data-page="san-pham"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></a>
+      <a href="van-hoa.html" data-page="van-hoa"><span lang="vi">Văn hoá</span><span lang="en">Culture</span></a>
+      <a href="mot-nam.html" data-page="mot-nam"><span lang="vi">Một năm</span><span lang="en">The year</span></a>
+      <a href="nhat-ky.html" data-page="nhat-ky"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang" role="group" aria-label="Ngôn ngữ / Language">
+        <button type="button" data-set-lang="vi" aria-pressed="true">VI</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="san-pham.html" class="cart" id="cart" aria-live="polite">
+        <span lang="vi">Giỏ</span><span lang="en">Cart</span>
+        <span class="cart__count" id="cartCount">0</span>
+      </a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
+        <span lang="vi">Menu</span><span lang="en">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="prods-zone" id="prodsZone">
+<section class="phero phero--prod" data-reveal>
+  <div class="wrap phero__inner">
+    <p class="kicker"><span lang="vi">Cà phê của nhà · 100% Robusta Đức An</span><span lang="en">Coffee from home · 100% Robusta from Đức An</span></p>
+    <h1 class="bigt "><span lang="vi"><span class="bw">Sản phẩm</span></span><span lang="en"><span class="bw">Products</span></span></h1>
+    <p class="phero__lead"><span lang="vi">Một giống Robusta, rang bằng tay theo từng mẻ nhỏ. Chọn theo cách bạn pha: hạt để tự xay, bột cho phin, túi lọc cho buổi sáng vội, hay hạt nhân cho người tự rang.</span><span lang="en">One Robusta, roasted by hand in small batches. Pick by how you brew: beans to grind yourself, ground coffee for the phin, drip bags for rushed mornings, or green beans if you roast at home.</span></p>
+  </div>
+</section>
+<section class="prods-sec" aria-label="Danh sách sản phẩm">
+  <div class="wrap">
+    <div class="prods-bar">
+      <div class="chips lg" role="tablist" aria-label="Lọc"><span class="chips__pill" aria-hidden="true"></span><button type="button" class="chip" role="tab" data-v="all" aria-selected="true"><span lang="vi">Tất cả</span><span lang="en">All</span></button><button type="button" class="chip" role="tab" data-v="hat-rang" aria-selected="false"><span lang="vi">Hạt rang</span><span lang="en">Beans</span></button><button type="button" class="chip" role="tab" data-v="bot" aria-selected="false"><span lang="vi">Cà phê bột</span><span lang="en">Ground</span></button><button type="button" class="chip" role="tab" data-v="drip" aria-selected="false"><span lang="vi">Drip bag</span><span lang="en">Drip bag</span></button><button type="button" class="chip" role="tab" data-v="hat-nhan" aria-selected="false"><span lang="vi">Hạt nhân</span><span lang="en">Green beans</span></button></div>
+      <p id="prodCount"></p>
+    </div>
+    <ul class="prods">
+      <li class="prod" data-cat="hat-rang" data-tint="var(--cherry-100)" style="--tile: var(--cherry-500); --bag: var(--cherry-700); --bag-ink: #FFFFFF; --script-ink: var(--cherry-500); --d: 0" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Signature</span><span lang="en">Signature</span></span><span class="bag__sub"><span lang="vi">100% Robusta</span><span lang="en">100% Robusta</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Signature</span><span lang="en">Signature</span></span>
+          <h3 class="prod__name"><span lang="vi">Signature 100% Robusta</span><span lang="en">Signature 100% Robusta</span></h3>
+          <span class="prod__type"><span lang="vi">Hạt rang · 500g</span><span lang="en">Beans · 500g</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Signature 100% Robusta, hạt rang" aria-label="Thêm vào giỏ: Signature 100% Robusta, hạt rang"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+      <li class="prod" data-cat="bot" data-tint="var(--cherry-100)" style="--tile: var(--cherry-500); --bag: var(--blossom); --bag-ink: var(--cherry-500); --script-ink: var(--cherry-500); --d: 1" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Signature</span><span lang="en">Signature</span></span><span class="bag__sub"><span lang="vi">Pha phin</span><span lang="en">Phin grind</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Signature</span><span lang="en">Signature</span></span>
+          <h3 class="prod__name tam"><span lang="vi">Signature pha phin</span><span lang="en">Signature phin grind</span></h3>
+          <span class="prod__type"><span lang="vi">Bột pha phin · 500g</span><span lang="en">Phin grind · 500g</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Signature pha phin" aria-label="Thêm vào giỏ: Signature pha phin"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+      <li class="prod" data-cat="hat-rang" data-tint="var(--sun-100)" style="--tile: var(--sun-500); --bag: var(--blossom); --bag-ink: var(--sun-600); --script-ink: var(--sun-600); --d: 2" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Rang mộc</span><span lang="en">Pure roast</span></span><span class="bag__sub"><span lang="vi">Robusta</span><span lang="en">Robusta</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Rang mộc</span><span lang="en">Pure roast</span></span>
+          <h3 class="prod__name tam"><span lang="vi">Robusta rang mộc</span><span lang="en">Pure roast Robusta</span></h3>
+          <span class="prod__type"><span lang="vi">Hạt rang · 500g</span><span lang="en">Beans · 500g</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Robusta rang mộc" aria-label="Thêm vào giỏ: Robusta rang mộc"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+      <li class="prod" data-cat="bot" data-tint="var(--sky-100)" style="--tile: var(--sky-600); --bag: var(--sky-200); --bag-ink: var(--ink); --script-ink: var(--sky-600); --d: 0" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Pha máy</span><span lang="en">Espresso</span></span><span class="bag__sub"><span lang="vi">Xay mịn</span><span lang="en">Fine grind</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Pha máy</span><span lang="en">Espresso</span></span>
+          <h3 class="prod__name tam"><span lang="vi">Bột pha máy</span><span lang="en">Espresso grind</span></h3>
+          <span class="prod__type"><span lang="vi">Xay mịn cho espresso, moka · 250g</span><span lang="en">Fine grind for espresso, moka · 250g</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Bột pha máy" aria-label="Thêm vào giỏ: Bột pha máy"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+      <li class="prod" data-cat="bot" data-tint="var(--honey-100)" style="--tile: var(--honey-200); --bag: var(--ink); --bag-ink: var(--honey-200); --script-ink: var(--honey-600); --d: 1" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Cà phê bột</span><span lang="en">Ground</span></span><span class="bag__sub"><span lang="vi">Pha phin</span><span lang="en">For the phin</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Cà phê bột</span><span lang="en">Ground</span></span>
+          <h3 class="prod__name tam"><span lang="vi">Bột pha phin</span><span lang="en">Phin-ground coffee</span></h3>
+          <span class="prod__type"><span lang="vi">Bột pha phin · 250g</span><span lang="en">Phin grind · 250g</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Bột pha phin" aria-label="Thêm vào giỏ: Bột pha phin"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+      <li class="prod" data-cat="drip" data-tint="var(--sky-100)" style="--tile: var(--sky-300); --bag: #FFFFFF; --bag-ink: var(--sky-600); --script-ink: var(--sky-500); --d: 2" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag bag--box" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Drip bag</span><span lang="en">Drip bag</span></span><span class="bag__sub"><span lang="vi">10 túi lọc</span><span lang="en">10 bags</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Drip bag</span><span lang="en">Drip bag</span></span>
+          <h3 class="prod__name tam"><span lang="vi">Drip bag Ông Cao</span><span lang="en">Ông Cao drip bag</span></h3>
+          <span class="prod__type"><span lang="vi">Hộp 10 túi × 12g</span><span lang="en">Box of 10 × 12g</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Drip bag Ông Cao" aria-label="Thêm vào giỏ: Drip bag Ông Cao"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+      <li class="prod" data-cat="hat-nhan" data-tint="var(--leaf-100)" style="--tile: var(--leaf-600); --bag: var(--leaf-100); --bag-ink: var(--leaf-700); --script-ink: var(--leaf-600); --d: 0" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Hạt nhân</span><span lang="en">Green</span></span><span class="bag__sub"><span lang="vi">Chưa rang</span><span lang="en">Unroasted</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Hạt nhân</span><span lang="en">Green</span></span>
+          <h3 class="prod__name"><span lang="vi">Hạt nhân Robusta</span><span lang="en">Green Robusta beans</span></h3>
+          <span class="prod__type"><span lang="vi">Chưa rang · 1kg</span><span lang="en">Unroasted · 1kg</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Hạt nhân Robusta" aria-label="Thêm vào giỏ: Hạt nhân Robusta"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+      <li class="prod" data-cat="hat-nhan" data-tint="var(--leaf-100)" style="--tile: var(--leaf-600); --bag: var(--honey-100); --bag-ink: var(--leaf-700); --script-ink: var(--leaf-600); --d: 1" data-rv>
+        <a class="prod__link" href="#">
+          <span class="prod__stage"><span class="bag bag--sack" aria-hidden="true"><span class="bag__brand">Ông Cao</span><span class="bag__name"><span lang="vi">Hạt nhân</span><span lang="en">Green</span></span><span class="bag__sub"><span lang="vi">Bao 30kg</span><span lang="en">30kg sack</span></span><span class="bag__seal"></span></span></span>
+          <span class="prod__script"><span lang="vi">Cho quán</span><span lang="en">For cafés</span></span>
+          <h3 class="prod__name tam"><span lang="vi">Hạt nhân cho quán</span><span lang="en">Green beans for cafés</span></h3>
+          <span class="prod__type"><span lang="vi">Bao 30kg</span><span lang="en">30kg sack</span></span>
+        </a>
+        <div class="prod__row">
+          <p class="prod__price tam">xxx.000đ</p>
+          <button type="button" class="prod__add" data-add="Hạt nhân cho quán, bao 30kg" aria-label="Thêm vào giỏ: Hạt nhân cho quán, bao 30kg"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg><span><span lang="vi">Thêm vào giỏ</span><span lang="en">Add to cart</span></span></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+</div>
+<div class="pfilter" data-light><div class="chips lg" role="tablist" aria-label="Lọc"><span class="chips__pill" aria-hidden="true"></span><button type="button" class="chip" role="tab" data-v="all" aria-selected="true"><span lang="vi">Tất cả</span><span lang="en">All</span></button><button type="button" class="chip" role="tab" data-v="hat-rang" aria-selected="false"><span lang="vi">Hạt rang</span><span lang="en">Beans</span></button><button type="button" class="chip" role="tab" data-v="bot" aria-selected="false"><span lang="vi">Cà phê bột</span><span lang="en">Ground</span></button><button type="button" class="chip" role="tab" data-v="drip" aria-selected="false"><span lang="vi">Drip bag</span><span lang="en">Drip bag</span></button><button type="button" class="chip" role="tab" data-v="hat-nhan" aria-selected="false"><span lang="vi">Hạt nhân</span><span lang="en">Green beans</span></button></div></div>
+
+<section class="pmatch">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div>
+        <h2 class="bigt "><span lang="vi"><span class="bw">Chọn</span> <span class="bw"><span class="bigt__s">theo</span> cách pha</span></span><span lang="en"><span class="bw">Choose</span> <span class="bw"><span class="bigt__s">by</span> brew method</span></span></h2>
+        <p class="sec-head__lead"><span lang="vi">Mỗi cách pha hợp một độ xay. Bấm vào từng dòng để xem cách pha từng bước.</span><span lang="en">Each method suits a grind. Tap a row for the step-by-step guide.</span></p>
+      </div>
+      <div class="pill-btn pill-btn--ink"><a href="van-hoa.html#pha" class="pill-btn__label"><span lang="vi">Hướng dẫn pha</span><span lang="en">Brewing guide</span></a><a href="van-hoa.html#pha" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div>
+    </div>
+    <div class="pmatch__list">
+      <a class="pmatch__row" href="van-hoa.html#pha-phin" data-rv style="--d: 0">
+        <span class="pmatch__method"><span lang="vi">Phin nhôm</span><span lang="en">Aluminium phin</span></span>
+        <span class="pmatch__pick"><span lang="vi">Gợi ý: <b>Signature pha phin, Bột pha phin</b></span><span lang="en">Try: <b>Signature phin grind, Phin-ground coffee</b></span></span>
+        <span class="pmatch__go"><span lang="vi">Cách pha</span><span lang="en">How to brew</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+      </a>
+      <a class="pmatch__row" href="van-hoa.html#pha-drip" data-rv style="--d: 1">
+        <span class="pmatch__method"><span lang="vi">Drip bag</span><span lang="en">Drip bag</span></span>
+        <span class="pmatch__pick"><span lang="vi">Gợi ý: <b>Drip bag Ông Cao</b></span><span lang="en">Try: <b>Ông Cao drip bag</b></span></span>
+        <span class="pmatch__go"><span lang="vi">Cách pha</span><span lang="en">How to brew</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+      </a>
+      <a class="pmatch__row" href="van-hoa.html#pha-espresso" data-rv style="--d: 2">
+        <span class="pmatch__method"><span lang="vi">Espresso</span><span lang="en">Espresso</span></span>
+        <span class="pmatch__pick"><span lang="vi">Gợi ý: <b>Robusta rang mộc, hạt</b></span><span lang="en">Try: <b>Pure roast Robusta, beans</b></span></span>
+        <span class="pmatch__go"><span lang="vi">Cách pha</span><span lang="en">How to brew</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+      </a>
+      <a class="pmatch__row" href="van-hoa.html#pha-moka" data-rv style="--d: 3">
+        <span class="pmatch__method"><span lang="vi">Moka pot</span><span lang="en">Moka pot</span></span>
+        <span class="pmatch__pick"><span lang="vi">Gợi ý: <b>Bột pha máy</b></span><span lang="en">Try: <b>Espresso grind</b></span></span>
+        <span class="pmatch__go"><span lang="vi">Cách pha</span><span lang="en">How to brew</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+      </a>
+      <a class="pmatch__row" href="van-hoa.html#pha-french" data-rv style="--d: 4">
+        <span class="pmatch__method"><span lang="vi">French press</span><span lang="en">French press</span></span>
+        <span class="pmatch__pick"><span lang="vi">Gợi ý: <b>Hạt rang, xay thô</b></span><span lang="en">Try: <b>Beans, coarse grind</b></span></span>
+        <span class="pmatch__go"><span lang="vi">Cách pha</span><span lang="en">How to brew</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+      </a>
+      <a class="pmatch__row" href="van-hoa.html#pha-cold" data-rv style="--d: 5">
+        <span class="pmatch__method"><span lang="vi">Cold brew</span><span lang="en">Cold brew</span></span>
+        <span class="pmatch__pick"><span lang="vi">Gợi ý: <b>Hạt rang, xay thô</b></span><span lang="en">Try: <b>Beans, coarse grind</b></span></span>
+        <span class="pmatch__go"><span lang="vi">Cách pha</span><span lang="en">How to brew</span><svg class="arr" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span>
+      </a>
+    </div>
+    <div class="pperks">
+      <div class="pperk" data-rv><b><span lang="vi">Rang theo mẻ nhỏ</span><span lang="en">Small-batch roasts</span></b><span class="tam"><span lang="vi">Mỗi mẻ vài ký, rang và nếm thử trước khi đóng gói.</span><span lang="en">A few kilos per batch, roasted and tasted before packing.</span></span></div>
+      <div class="pperk" data-rv style="--d: 1"><b><span lang="vi">Ghi ngày rang trên gói</span><span lang="en">Roast date on every bag</span></b><span class="tam"><span lang="vi">Ngon nhất trong khoảng 2–4 tuần sau ngày rang.</span><span lang="en">Best within about 2–4 weeks of roasting.</span></span></div>
+      <div class="pperk" data-rv style="--d: 2"><b><span lang="vi">Giao hàng toàn quốc</span><span lang="en">Nationwide delivery</span></b><span class="tam"><span lang="vi">Thời gian và phí giao hàng sẽ cập nhật sau.</span><span lang="en">Delivery times and fees to be added.</span></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pcta" data-reveal>
+  <div class="wrap">
+    <h2 class="bigt "><span lang="vi"><span class="bw">Chưa biết</span> <span class="bw"><span class="bigt__s">chọn</span> gói nào?</span></span><span lang="en"><span class="bw">Not sure</span> <span class="bw"><span class="bigt__s">which</span> bag?</span></span></h2>
+    <p class="pcta__lead"><span lang="vi">Nhắn cho nhà mình cách bạn hay pha, nhà mình gợi ý giúp.</span><span lang="en">Tell us how you usually brew and we will suggest one.</span></p>
+    <div class="pcta__btns"><div class="pill-btn pill-btn--ink"><a href="https://facebook.com/OngCaoCoffee" class="pill-btn__label"><span lang="vi">Nhắn tin cho nhà mình</span><span lang="en">Message the family</span></a><a href="https://facebook.com/OngCaoCoffee" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div><div class="pill-btn pill-btn--light"><a href="van-hoa.html#pha" class="pill-btn__label"><span lang="vi">Xem hướng dẫn pha</span><span lang="en">See the brewing guide</span></a><a href="van-hoa.html#pha" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a></div></div>
+  </div>
+</section>
+</main>
+
+<!-- 9. Đăng ký + footer -->
+<footer class="footer" data-light>
+  <!-- Màn cuối (học footer của Delta): nền nông trại đứng yên, câu slogan lớn ở giữa;
+       cuộn tiếp thì thẻ kính lớn trượt lên phủ qua, chứa toàn bộ thông tin footer -->
+  <div class="footer__pre" id="footerPre">
+    <div class="footer__bg" aria-hidden="true"><span class="ph__label tam"><span lang="vi">Ảnh hoặc video tạm: vườn cà phê Rừng Lạnh lúc sáng sớm</span><span lang="en">Placeholder photo or video: Rừng Lạnh orchard at dawn</span></span></div>
+    <div class="footer__hero" id="footerHero">
+      <p class="footer__kicker"><span lang="vi">Nông trại Rừng Lạnh · Đức An</span><span lang="en">Rừng Lạnh Farm · Đức An</span></p>
+      <p class="footer__slogan">
+        <span lang="vi"><span class="fw">Học <span class="footer__small">từ</span> đất,</span> <span class="fw">giữ <span class="footer__small">bằng</span> tay</span></span>
+        <span lang="en" class="tam"><span class="fw">Learned <span class="footer__small">from</span> the land,</span> <span class="fw">kept <span class="footer__small">by</span> hand</span></span>
+      </p>
+      <div class="pill-btn footer__btn">
+        <a href="index.html#ghe-shop" class="pill-btn__label"><span lang="vi">Ghé nông trại</span><span lang="en">Visit the farm</span></a>
+        <a href="index.html#ghe-shop" class="pill-btn__icon" tabindex="-1" aria-hidden="true"><span class="pill-btn__arrow"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span><span class="pill-btn__arrow pill-btn__arrow--next"><svg viewBox="0 0 20 20"><path d="M4 10h11M11 5l5 5-5 5"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Thẻ kính lớn (học footer Delta): lúc đầu tràn mép và trượt chậm hơn tốc độ cuộn,
+       rồi co lại cách mép, bo góc và bắt kịp nội dung -->
+  <div class="footer__panel" id="footerPanel">
+    <span class="footer__glass lg" id="footerGlass" aria-hidden="true"></span>
+    <div class="footer__inner">
+      <a href="index.html" class="logo footer__logo" aria-label="Ông Cao Coffee"><span class="logo__mark" aria-hidden="true">ÔC</span><span class="logo__word">Ông Cao Coffee</span></a>
+
+      <div class="fcol fcol--a">
+        <h3 class="fcol__h"><span lang="vi">Về Ông Cao</span><span lang="en">About Ông Cao</span></h3>
+        <a href="lich-su.html"><span lang="vi">Chuyện ông Cao</span><span lang="en">Mr. Cao's story</span></a>
+        <a href="ve-ong-cao.html"><span lang="vi">Về thương hiệu</span><span lang="en">About the brand</span></a>
+        <a href="van-hoa.html"><span lang="vi">Văn hoá cà phê</span><span lang="en">Coffee culture</span></a>
+        <span class="fcol__sub">
+          <a href="van-hoa.html#pha"><span lang="vi">Hướng dẫn pha</span><span lang="en">Brewing guide</span></a>
+          <a href="mot-nam.html"><span lang="vi">Một năm ở Đức An</span><span lang="en">A year in Đức An</span></a>
+        </span>
+      </div>
+      <div class="fcol fcol--b">
+        <h3 class="fcol__h"><span lang="vi">Sản phẩm</span><span lang="en">Products</span></h3>
+        <a href="san-pham.html">Signature</a>
+        <a href="san-pham.html"><span lang="vi">Hạt rang</span><span lang="en">Roasted beans</span></a>
+        <a href="san-pham.html"><span lang="vi">Cà phê bột</span><span lang="en">Ground coffee</span></a>
+        <a href="san-pham.html"><span lang="vi">Hạt nhân</span><span lang="en">Green beans</span></a>
+      </div>
+      <nav class="fcol fcol--c" aria-label="Footer">
+        <a href="san-pham.html" class="fcol__big"><span lang="vi">Mua cà phê</span><span lang="en">Shop coffee</span></a>
+        <a href="ve-ong-cao.html#noi-chon" class="fcol__big"><span lang="vi">Ghé thăm</span><span lang="en">Visit us</span></a>
+        <a href="nhat-ky.html" class="fcol__big"><span lang="vi">Nhật ký</span><span lang="en">Journal</span></a>
+        <a href="#signup" class="fcol__big"><span lang="vi">Nhận thư mỗi mùa</span><span lang="en">Seasonal letter</span></a>
+      </nav>
+
+      <dl class="footer__contact">
+        <div><dt>Hotline</dt><dd class="tam">0___ ___ ___</dd></div>
+        <div><dt>Email</dt><dd class="tam">xinchao@ongcao.vn</dd></div>
+        <div><dt><span lang="vi">Nông trại</span><span lang="en">Farm</span></dt><dd><span lang="vi">Xã Đức An, tỉnh Lâm Đồng</span><span lang="en">Đức An Commune, Lâm Đồng</span></dd></div>
+        <p class="footer__motto"><span lang="vi">Nắng gió dưỡng hạt, tay người nối vị.</span><span lang="en">Sun and wind nurture the bean, hands carry on its taste.</span></p>
+      </dl>
+
+      <ul class="social" aria-label="Mạng xã hội">
+        <li><a href="https://facebook.com/OngCaoCoffee" class="social__a" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.5h2.5V5h-2.5C12 5 10.5 6.6 10.5 9v2H8v3.5h2.5V21H14v-6.5h2.6l.4-3.5h-3V9.4c0-.6.2-.9.5-.9z"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.9" cy="7.1" r=".6" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 4v10.6a3.1 3.1 0 1 1-3.1-3.1"/><path d="M13.5 4c.4 2.4 2 4 4.5 4.3"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4-2.5z" class="fill"/></svg></a></li>
+        <li><a href="#" class="social__a tam" aria-label="Zalo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-4.7 0-8.5 3.1-8.5 7 0 2.1 1.1 4 2.9 5.3L5.8 20l3.6-1.8c.8.2 1.7.3 2.6.3 4.7 0 8.5-3.1 8.5-7s-3.8-7-8.5-7z"/><path d="M9.3 9.5h4.2l-4.2 4.6h4.4"/></svg></a></li>
+      </ul>
+
+      <div class="fcol fcol--d">
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+        <a href="#" class="tam"><span lang="vi">Đặt hàng cho quán và văn phòng</span><span lang="en">Orders for cafés and offices</span></a>
+        <a href="https://facebook.com/OngCaoCoffee" target="_blank" rel="noopener"><span lang="vi">Nhắn tin cho nhà mình</span><span lang="en">Message the family</span></a>
+      </div>
+
+      <div class="footer__signup">
+        <form class="signup" id="signup" novalidate>
+      <div>
+        <h3 class="signup__title"><span lang="vi">Nhận thư mỗi mùa về</span><span lang="en">Get a letter each new season</span></h3>
+        
+      </div>
+      <div class="signup__field">
+        <label for="email" class="sr-only">Email</label>
+        <input id="email" type="email" placeholder="ten@email.com" autocomplete="email">
+        <button type="submit" class="btn btn--buy"><span lang="vi">Đăng ký</span><span lang="en">Sign up</span></button>
+        <p class="signup__msg" id="signupMsg" role="status"></p>
+      </div>
+    </form>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <span>Ông Cao Coffee © 2026</span>
+      <span class="footer__bar-links">
+        <a href="#"><span lang="vi">Chính sách bảo mật</span><span lang="en">Privacy policy</span></a>
+        <a href="#"><span lang="vi">Điều khoản sử dụng</span><span lang="en">Terms of use</span></a>
+        <a href="#"><span lang="vi">Giao hàng và đổi trả</span><span lang="en">Shipping and returns</span></a>
+      </span>
+      <span class="tam"><span lang="vi">Tên doanh nghiệp, mã số thuế: bổ sung sau</span><span lang="en">Company name, tax ID: to be added</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/main.js?v=90"></script>
+<script src="assets/pages.js?v=3"></script>
+</body>
+</html>

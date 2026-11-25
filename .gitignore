@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Cài đặt riêng của Claude trên máy; giữ lại cấu hình chạy thử trang
+.claude/*
+!.claude/launch.json
