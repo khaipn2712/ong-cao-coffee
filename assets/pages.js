@@ -82,20 +82,9 @@
     }, reduce ? 0 : 260);
   }
 
-  // Thẻ xếp chồng khi cuộn: thẻ phía dưới trượt lên phủ, thẻ phía trên thu nhỏ và tối đi một chút
-  function stack(cards) {
-    if (!cards.length || reduce) return;
-    onScroll(function () {
-      cards.forEach(function (c, i) {
-        var next = cards[i + 1];
-        if (!next) return;
-        var top = parseFloat(getComputedStyle(c).top) || 0;
-        var k = clamp(1 - (next.getBoundingClientRect().top - top) / Math.max(c.offsetHeight, 1), 0, 1);
-        c.style.setProperty('--s', (1 - k * 0.06).toFixed(4));
-        c.style.setProperty('--b', (1 - k * 0.22).toFixed(3));
-      });
-    });
-  }
+  // Thẻ xếp chồng khi cuộn: chỉ dùng position: sticky trong CSS.
+  // Bản 10kweb bỏ phần thu nhỏ và làm tối thẻ phía trên để chuyển động nhẹ hơn.
+  function stack() {}
 
   // Đăng ký nhận thư (các form phụ trên trang con)
   $$('.js-signup').forEach(function (f) {
@@ -169,21 +158,13 @@
   })();
 
   /* =====================================================================
-     2. VỀ ÔNG CAO: ảnh trôi theo cuộn, đo vòng tròn, thẻ nguyên tắc xếp chồng
+     2. VỀ ÔNG CAO: đo vòng tròn, bản đồ, thẻ nguyên tắc xếp chồng
      ===================================================================== */
   (function () {
     var hero = $('.ahero');
     if (!hero) return;
     var ring = $('.ahero__ring', hero);
     if (ring) ring.style.setProperty('--len', Math.ceil(ring.getTotalLength()));
-    var floats = $$('.afloat', hero);
-    var desk = window.matchMedia('(min-width: 761px)');
-    if (!reduce) onScroll(function () {
-      if (!desk.matches) { floats.forEach(function (f) { f.style.transform = ''; }); return; }
-      var r = hero.getBoundingClientRect();
-      if (r.bottom < 0) return;
-      floats.forEach(function (f) { f.style.transform = 'translate3d(0,' + (r.top * Number(f.dataset.depth || 0)).toFixed(1) + 'px,0)'; });
-    });
     var done = $('.amap__done');
     if (done) done.style.setProperty('--len', Math.ceil(done.getTotalLength()));
     var places = $('.aplaces');
@@ -210,7 +191,7 @@
   })();
 
   /* =====================================================================
-     3. SẢN PHẨM: lọc, nền đổi màu theo sản phẩm, thanh lọc nổi
+     3. SẢN PHẨM: lọc, thanh lọc nổi
      ===================================================================== */
   (function () {
     var zone = $('#prodsZone');
@@ -229,11 +210,6 @@
         filterList(items, function (it) { return v === 'all' || it.dataset.cat === v; }, setCount);
       });
     }).map(function (api, i) { return { api: api, el: bars[i] }; });
-    // Rê chuột vào sản phẩm nào, nền trang ngả nhẹ sang màu của sản phẩm đó
-    items.forEach(function (it) {
-      it.addEventListener('mouseenter', function () { zone.style.setProperty('--tint', it.dataset.tint); });
-      it.addEventListener('mouseleave', function () { zone.style.removeProperty('--tint'); });
-    });
     var pf = $('.pfilter'), grid = $('.prods', zone);
     onScroll(function () {
       var r = grid.getBoundingClientRect(), vh = window.innerHeight;
@@ -516,13 +492,12 @@
       c.classList.toggle('is-now', on);
       var b = c.querySelector('.ycard__live');
       if (b) { b.hidden = !on; if (on && O.makeWave) O.makeWave(b.querySelector('.live-wave')).setLive(true); }
-      c.querySelector('.ycard__ring').classList.toggle('ico-live', on);
     });
     // Rê chuột vào thẻ: icon chạy hiệu ứng như giai đoạn ở trang chủ
     cards.forEach(function (c) {
       var ring = c.querySelector('.ycard__ring');
       c.addEventListener('mouseenter', function () { ring.classList.add('ico-live'); });
-      c.addEventListener('mouseleave', function () { if (!c.classList.contains('is-now')) ring.classList.remove('ico-live'); });
+      c.addEventListener('mouseleave', function () { ring.classList.remove('ico-live'); });
     });
     stack(cards);
   })();

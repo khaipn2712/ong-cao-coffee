@@ -5,50 +5,9 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lang = function () { return root.lang === 'en' ? 'en' : 'vi'; };
 
-  /* ---------- Cuộn mượt có quán tính (học Lenis trên trang Delta) ----------
-     Chỉ nhận con lăn chuột và bàn di chuột. Chạm, bàn phím, kéo thanh cuộn và liên kết neo
-     vẫn dùng cuộn gốc của trình duyệt. Mọi hiệu ứng theo cuộn nhờ vậy chạy chung một nhịp êm. */
-  var smooth = (function () {
-    var api = { on: false, busy: function () { return false; } };
-    if (reduceMotion) return api;
-    var TAU = 120;                       // ms: càng lớn càng "trôi"
-    var cur = window.scrollY, target = cur, lastSet = cur, raf = null, lastT = null;
-    function maxY() { return document.documentElement.scrollHeight - window.innerHeight; }
-    // Con trỏ đang ở trên một vùng tự cuộn được (dải kéo ngang, danh sách...) thì để vùng đó tự cuộn
-    function ownScroller(el, vertical) {
-      for (; el && el !== document.body && el !== document.documentElement; el = el.parentElement) {
-        if (el.nodeType !== 1) continue;
-        var cs = getComputedStyle(el);
-        if (vertical ? (/(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 1)
-                     : (/(auto|scroll)/.test(cs.overflowX) && el.scrollWidth > el.clientWidth + 1)) return true;
-      }
-      return false;
-    }
-    function step(t) {
-      // Có nguồn khác vừa cuộn trang (neo, tự căn khung, bàn phím): nhường lại ngay
-      if (Math.abs(window.scrollY - lastSet) > 2) { cur = target = lastSet = window.scrollY; raf = null; lastT = null; return; }
-      var dt = lastT === null ? 16 : Math.min(t - lastT, 50); lastT = t;
-      cur += (target - cur) * (1 - Math.exp(-dt / TAU));
-      if (Math.abs(target - cur) < 0.4) cur = target;
-      window.scrollTo({ top: cur, behavior: 'instant' });
-      lastSet = cur;
-      if (cur === target) { raf = null; lastT = null; } else raf = requestAnimationFrame(step);
-    }
-    window.addEventListener('wheel', function (e) {
-      if (e.ctrlKey || e.defaultPrevented) return;
-      var dy = e.deltaY, dx = e.deltaX;
-      if (e.deltaMode === 1) { dy *= 16; dx *= 16; } else if (e.deltaMode === 2) { dy *= window.innerHeight; }
-      if (Math.abs(dx) > Math.abs(dy)) return;            // vuốt ngang: để trình duyệt xử lý
-      if (ownScroller(e.target, true)) return;
-      e.preventDefault();
-      if (!raf) { cur = target = lastSet = window.scrollY; }
-      target = Math.max(0, Math.min(maxY(), target + dy));
-      if (!raf) raf = requestAnimationFrame(step);
-    }, { passive: false });
-    api.on = true;
-    api.busy = function () { return !!raf; };
-    return api;
-  })();
+  /* ---------- Cuộn: dùng cuộn gốc của trình duyệt ----------
+     Bản 10kweb bỏ cuộn mượt giả lập: cuộn gốc phản hồi nhanh và quen tay nhất trên mọi thiết bị. */
+  var smooth = { on: false, busy: function () { return false; } };
 
   /* ---------- Ngôn ngữ VI / EN ---------- */
   var langButtons = document.querySelectorAll('[data-set-lang]');
@@ -126,12 +85,6 @@
       lead.classList.toggle('is-on', k === n);
       if (k === n) lead.removeAttribute('aria-hidden'); else lead.setAttribute('aria-hidden', 'true');
     });
-    // Viên sáng nháy nhẹ khi chuyển sang mục khác (chạy lại hiệu ứng mỗi lần đổi)
-    if (prevStage !== n && !reduceMotion) {
-      stagePill.classList.remove('is-blink');
-      void stagePill.offsetWidth;
-      stagePill.classList.add('is-blink');
-    }
     prevStage = n;
     placeStagePill();
   }
@@ -205,7 +158,7 @@
   syncPaused();
   requestAnimationFrame(frame);
 
-  /* ---------- Thẻ kính: hiện lần lượt, hai ô tự đổi mặt ---------- */
+  /* ---------- Thẻ kính ở hero ---------- */
   var glass = document.getElementById('glass');
   var glassHover = false;
   holdWhileUsing(glass);
@@ -213,7 +166,7 @@
   glass.addEventListener('mouseleave', function () { glassHover = false; });
   glass.addEventListener('focusin', function () { glassHover = true; });
   glass.addEventListener('focusout', function () { glassHover = false; });
-  setTimeout(function () { glass.classList.add('is-in'); }, reduceMotion ? 0 : 450);
+  glass.classList.add('is-in');
 
   var rotating = Array.prototype.slice.call(glass.querySelectorAll('[data-rotate]'));
   rotating.forEach(function (cell) {
@@ -224,14 +177,6 @@
     var cur = Array.prototype.findIndex.call(faces, function (f) { return f.classList.contains('is-on'); });
     var next = (cur + 1) % faces.length;
     faces.forEach(function (f, k) { f.classList.toggle('is-on', k === next); f.inert = k !== next; });
-  }
-  if (!reduceMotion) {
-    var tick = 0;
-    setInterval(function () {
-      if (glassHover || userPaused || document.hidden) return;
-      flip(rotating[tick % rotating.length]);
-      tick += 1;
-    }, 3000);
   }
   }
 
@@ -350,7 +295,9 @@
     }
   }
   var refreshLights = function () {};
-  setupLight(document.documentElement);
+  // Bản 10kweb: chỉ thẻ kính lớn ở footer đón ánh sáng theo con trỏ
+  var lightZone = document.querySelector('.footer');
+  if (lightZone) setupLight(lightZone);
 
   /* ---------- Dữ liệu các giai đoạn trong năm ---------- */
   // Nội dung tạm: gia đình cần xác nhận tháng, mô tả và ảnh thật cho từng giai đoạn.
@@ -361,9 +308,9 @@
       lead: { vi: 'Giữa mùa khô, sau những đợt tưới cây, hoa trắng nở kín cành và thơm khắp nông trại trong vài ngày, như lời chào của mùa mới.',
               en: 'In the middle of the dry season, after the watering of the trees, white blossom covers every branch and perfumes the farm for a few days, a greeting from the new season.' },
       photos: [
-        { c: 'var(--leaf-400)', vi: 'Cành trắng hoa', en: 'Branches in white' },
+        { c: 'var(--sky-400)', vi: 'Cành trắng hoa', en: 'Branches in white' },
         { c: 'var(--sky-500)', vi: 'Tưới trước mùa hoa', en: 'Watering before the bloom' },
-        { c: 'var(--leaf-300)', vi: 'Ong ghé về vườn', en: 'Bees come to the orchard' }
+        { c: 'var(--sky-300)', vi: 'Ong ghé về vườn', en: 'Bees come to the orchard' }
       ]
     },
     {
@@ -372,8 +319,8 @@
       lead: { vi: 'Mùa mưa, quả căng dần trên cành. Cả nhà làm cỏ, bón phân, tỉa cành để cây giữ sức, và chăm lúa, ngô, khoai bên cạnh.',
               en: 'In the rainy season the cherries fill out. The family weeds, feeds and prunes so the trees keep their strength, and tends the rice, corn and sweet potato alongside.' },
       photos: [
-        { c: 'var(--leaf-700)', vi: 'Chùm quả xanh', en: 'Green cherries in clusters' },
-        { c: 'var(--leaf-600)', vi: 'Làm cỏ giữa các hàng', en: 'Weeding between the rows' },
+        { c: 'var(--sky-700)', vi: 'Chùm quả xanh', en: 'Green cherries in clusters' },
+        { c: 'var(--sky-600)', vi: 'Làm cỏ giữa các hàng', en: 'Weeding between the rows' },
         { c: 'var(--slate-500)', vi: 'Mưa chiều phủ nông trại', en: 'Afternoon rain over the farm' }
       ]
     },
@@ -384,8 +331,8 @@
               en: 'The cherries turn a deep red. The family picks only what is ripe, going over each tree several times, as if waiting for every cherry to finish ripening in its own time.' },
       photos: [
         { c: 'var(--cherry-700)', vi: 'Quả đỏ trên cành', en: 'Ripe red on the branch', date: '12/11' },
-        { c: 'var(--leaf-700)', vi: 'Gùi cà phê vừa hái', en: 'A basket just picked', date: '10/11' },
-        { c: 'var(--honey-400)', vi: 'Mẻ đầu trên sân phơi', en: 'The first batch on the drying yard', date: '08/11' }
+        { c: 'var(--sky-700)', vi: 'Gùi cà phê vừa hái', en: 'A basket just picked', date: '10/11' },
+        { c: 'var(--sky-300)', vi: 'Mẻ đầu trên sân phơi', en: 'The first batch on the drying yard', date: '08/11' }
       ]
     },
     {
@@ -394,9 +341,9 @@
       lead: { vi: 'Quả vừa hái được trải đều trên sân phơi, dưới nắng và gió cao nguyên. Mỗi ngày được đảo bằng tay cho đến khi khô đều, không vội.',
               en: 'Freshly picked cherries are spread across the yard under the highland sun and wind, and turned by hand each day until they dry evenly, with no rush.' },
       photos: [
-        { c: 'var(--honey-400)', vi: 'Sân phơi lúc bình minh', en: 'The yard at dawn' },
-        { c: 'var(--sun-600)', vi: 'Đảo cà phê bằng cào', en: 'Raking the cherries' },
-        { c: 'var(--sun-500)', vi: 'Thử độ khô bằng tay', en: 'Testing dryness by hand' }
+        { c: 'var(--sky-300)', vi: 'Sân phơi lúc bình minh', en: 'The yard at dawn' },
+        { c: 'var(--sky-700)', vi: 'Đảo cà phê bằng cào', en: 'Raking the cherries' },
+        { c: 'var(--sky-500)', vi: 'Thử độ khô bằng tay', en: 'Testing dryness by hand' }
       ]
     },
     {
@@ -406,7 +353,7 @@
               en: 'Dried beans are hulled and roasted in small batches in the family roastery all year, then packed while the aroma is at its peak.' },
       photos: [
         { c: 'var(--slate-400)', vi: 'Hạt sau khi tách vỏ', en: 'Green beans after hulling' },
-        { c: 'var(--sun-600)', vi: 'Mẻ rang buổi sáng', en: 'The morning roast' },
+        { c: 'var(--sky-700)', vi: 'Mẻ rang buổi sáng', en: 'The morning roast' },
         { c: 'var(--slate-500)', vi: 'Đóng gói ngay tại xưởng', en: 'Packing at the roastery' }
       ]
     }
@@ -487,7 +434,6 @@
     var backBtn = document.getElementById('journeyBack');
     var track = document.getElementById('journeyTrack');
     var done = document.getElementById('journeyDone');
-    var sparks = Array.prototype.slice.call(section.querySelectorAll('.journey__spark'));
     var linkPath = document.getElementById('journeyLink');
     var routePath = document.getElementById('journeyRoute');
     var etaEl = document.getElementById('journeyEta');
@@ -530,8 +476,6 @@
       if (len > 1) { shape.style.setProperty('--len', String(len)); shape.classList.add('draw'); }
     });
 
-    /* Mở đầu một lần: đường sáng chạy từ đầu năm tới hôm nay,
-       mỗi vòng tròn và icon hiện ra đúng lúc đường chạy qua; các giai đoạn sau hiện tiếp theo. */
     var DRAW_MS = 1800;
     done.style.strokeDasharray = total + ' ' + total;
     done.style.strokeDashoffset = String(total);
@@ -539,59 +483,16 @@
     function runIntro() {
       if (introDone) return;
       introDone = true;
-      // Tiêu đề lớn hiện từng cụm từ, đi trước đường sáng một nhịp
-      requestAnimationFrame(function () { section.classList.remove('title-pending'); });
-      if (reduceMotion) {
-        done.style.transition = 'none';
-        done.style.strokeDashoffset = String(total - doneLen);
-        btns.forEach(function (b) { b.classList.add('is-in'); });
-        section.classList.remove('intro-pending');
-        return;
-      }
-      done.style.transition = 'stroke-dashoffset ' + DRAW_MS + 'ms cubic-bezier(0.19, 1, 0.22, 1)';
+      btns.forEach(function (b) { b.classList.add('is-in'); });
+      // Đường năm vẽ một lần, từ đầu năm tới hôm nay
+      done.style.transition = reduceMotion ? 'none' : 'stroke-dashoffset ' + DRAW_MS + 'ms cubic-bezier(0.19, 1, 0.22, 1)';
       done.style.strokeDashoffset = String(total - doneLen);
-      // Đường cong easing gần với hàm mũ: tiến độ f(t) = 1 - 2^(-10t) → t = -log2(1 - f) / 10
-      btns.forEach(function (b, k) {
-        var delay;
-        if (k <= nowIdx) {
-          var f = Math.min(nodeLen[k] / Math.max(doneLen, 1), 0.999);
-          delay = (-Math.log(1 - f) / Math.LN2 / 10) * DRAW_MS;
-        } else {
-          delay = DRAW_MS * 0.55 + (k - nowIdx) * 140;
-        }
-        setTimeout(function () { b.classList.add('is-in'); }, delay);
-      });
-      setTimeout(function () { section.classList.remove('intro-pending'); startSpark(); }, DRAW_MS + 400);
-    }
-    if (!reduceMotion) { section.classList.add('intro-pending'); section.classList.add('title-pending'); }
-
-    // Chuỗi chấm sáng chạy suốt quãng đường từ đầu năm qua từng giai đoạn tới hôm nay,
-    // như dòng chảy nối các mùa với nhau
-    var sparkVisible = false, sparkRaf = null, sparkStart = null;
-    function sparkLoop(t) {
-      if (sparkStart === null) sparkStart = t;
-      var period = 4200;
-      sparks.forEach(function (s, i) {
-        var u = (((t - sparkStart) / period) + i / sparks.length) % 1;
-        var eased = 1 - Math.pow(1 - u, 1.6);
-        var p = track.getPointAtLength(doneLen * eased);
-        s.setAttribute('cx', p.x.toFixed(1));
-        s.setAttribute('cy', p.y.toFixed(1));
-        s.style.opacity = (Math.sin(Math.PI * u) * (1 - i * 0.2)).toFixed(3);
-      });
-      sparkRaf = sparkVisible ? requestAnimationFrame(sparkLoop) : null;
-    }
-    function startSpark() {
-      if (sparkVisible && !sparkRaf && !reduceMotion && doneLen > 0 && introDone) {
-        sparkStart = null; sparkRaf = requestAnimationFrame(sparkLoop);
-      }
     }
 
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
         var en = entries[0];
-        sparkVisible = en.isIntersecting;
-        if (en.isIntersecting) { runIntro(); if (!section.classList.contains('intro-pending')) startSpark(); }
+        if (en.isIntersecting) runIntro();
         if (!en.isIntersecting && view !== nowIdx) setView(nowIdx, true);
       }, { threshold: 0.25 }).observe(section);
     } else { runIntro(); }
@@ -721,21 +622,6 @@
     });
     backBtn.addEventListener('click', function () { setView(nowIdx); btns[nowIdx].focus(); });
 
-    // Ảnh nền trôi chậm hơn nội dung khi cuộn (lệch tối đa khoảng 12% chiều cao section)
-    var bgEl = document.getElementById('journeyBg');
-    if (bgEl && !reduceMotion) {
-      var pq = false;
-      var parallax = function () {
-        pq = false;
-        var r = section.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
-        var progress = (window.innerHeight - r.top) / (window.innerHeight + r.height); // 0 → 1 khi section đi qua màn hình
-        var shift = (progress - 0.5) * r.height * 0.16;
-        bgEl.style.setProperty('--bg-shift', shift.toFixed(1) + 'px');
-      };
-      window.addEventListener('scroll', function () { if (!pq) { pq = true; requestAnimationFrame(parallax); } }, { passive: true });
-      parallax();
-    }
 
     paint();
     // Đổi ngôn ngữ thì vẽ lại section hành trình
@@ -743,174 +629,28 @@
     renderSeason = function () { renderSeasonBase(); paint(); };
   })();
 
-  /* ---------- Dải sản phẩm: trôi chậm liên tục, cuộn trang thì đổi hướng và tăng tốc ---------- */
-  // Cuộn xuống: sản phẩm chạy từ trái sang phải. Cuộn lên: chạy từ phải sang trái.
-  // Sau khi ngừng cuộn, dải giữ hướng vừa cuộn và chậm dần về tốc độ trôi nền.
+  /* ---------- Dải sản phẩm dưới hero: đứng yên ----------
+     Khung sản phẩm cao bằng 1/6 hero: đo chiều cao hero thật. Màn hẹp thì kéo ngang. */
   (function () {
-    var track = document.getElementById('pstripTrack');
-    if (!track || reduceMotion) return;
-    var viewport = track.parentElement;
-    var originals = Array.prototype.slice.call(track.children);
-    var BASE = 28;          // px mỗi giây khi không cuộn
-    var MAX = 380;          // tốc độ tối đa khi cuộn mạnh
-    var setW = 0, x = 0, dir = -1, speed = BASE, hover = false, visible = false, raf = null, last = null;
-    var lastScroll = window.scrollY;
-
-    // Khung sản phẩm cao bằng 1/6 hero: đo chiều cao hero thật
     var heroEl = document.getElementById('hero');
-    function syncHeroHeight() {
-      if (heroEl) document.documentElement.style.setProperty('--hero-h', heroEl.offsetHeight + 'px');
-    }
-
-    function build() {
-      syncHeroHeight();
-      Array.prototype.slice.call(track.querySelectorAll('.is-clone')).forEach(function (c) { c.remove(); });
-      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      setW = track.scrollWidth + gap;
-      var copies = Math.ceil(viewport.clientWidth / setW) + 2;
-      for (var i = 0; i < copies; i++) {
-        originals.forEach(function (li) {
-          var c = li.cloneNode(true);
-          c.classList.add('is-clone');
-          c.setAttribute('aria-hidden', 'true');
-          c.querySelectorAll('a').forEach(function (a) { a.tabIndex = -1; });
-          track.appendChild(c);
-        });
-      }
-      x = -setW;
-      track.style.transform = 'translate3d(' + x + 'px,0,0)';
-    }
-
-    function loop(t) {
-      if (last === null) last = t;
-      var dt = Math.min(t - last, 80); last = t;
-      var target = hover ? 0 : BASE;
-      speed += (target - speed) * (1 - Math.exp(-dt / 650));
-      x += dir * speed * dt / 1000;
-      while (x > 0) x -= setW;
-      while (x <= -setW) x += setW;
-      track.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
-      raf = visible ? requestAnimationFrame(loop) : null;
-    }
-    function start() { if (!raf && visible) { last = null; raf = requestAnimationFrame(loop); } }
-
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY, d = y - lastScroll;
-      lastScroll = y;
-      if (!d) return;
-      dir = d > 0 ? 1 : -1;
-      speed = Math.min(Math.max(speed, BASE) + Math.abs(d) * 4, MAX);
-    }, { passive: true });
-
-    viewport.addEventListener('mouseenter', function () { hover = true; });
-    viewport.addEventListener('mouseleave', function () { hover = false; });
-    viewport.addEventListener('focusin', function () { hover = true; });
-    viewport.addEventListener('focusout', function () { hover = false; });
-
-    build();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        visible = entries[0].isIntersecting;
-        start();
-      }).observe(viewport);
-    } else { visible = true; start(); }
-
-    var rt;
-    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 200); });
+    if (!heroEl || !document.getElementById('pstripTrack')) return;
+    function syncHeroHeight() { root.style.setProperty('--hero-h', heroEl.offsetHeight + 'px'); }
+    syncHeroHeight();
+    window.addEventListener('resize', syncHeroHeight);
   })();
 
-  /* ---------- Tự căn khung khi cuộn tới section hành trình ----------
-     Khi người dùng ngừng cuộn gần một trong ba khung, trang trượt nhẹ về đúng khung đó:
-     khung 1 = dải sản phẩm + tiêu đề lớn, khung 2 = tiêu đề lớn + các giai đoạn,
-     khung 3 = các giai đoạn + phần chi tiết.
-     Dừng xa khung thì không can thiệp, để không giành quyền cuộn của người dùng. */
-  (function () {
-    var section = document.getElementById('hanh-trinh');
-    var map = document.getElementById('journeyMap');
-    var title = document.getElementById('journeyTitle');
-    if (!section || !map || !title) return;
-    var HEADER = 72, GAP = 8;
-    var IDLE = 320;          // chờ người dùng ngừng hẳn rồi mới căn (trước là 140ms)
-    var wide = window.matchMedia('(min-width: 761px)');
-    var lastInput = 0, timer = null, anim = null;
-
-    function targets() {
-      var y = window.scrollY;
-      return [
-        section.getBoundingClientRect().top + y - HEADER,                // khung 1: sản phẩm + tiêu đề
-        title.getBoundingClientRect().top + y - HEADER - 3 * GAP,        // khung 2: tiêu đề + giai đoạn
-        map.getBoundingClientRect().top + y - HEADER - GAP               // khung 3: giai đoạn + chi tiết
-      ];
-    }
-    // Đường cong êm: tăng tốc rất nhẹ ở đầu, chậm dần thật lâu ở cuối
-    function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-    function stopAnim() { if (anim) { cancelAnimationFrame(anim.raf); anim = null; } }
-    function glideTo(target) {
-      stopAnim();
-      var from = window.scrollY, dist = target - from;
-      // Quãng càng dài thì trượt càng lâu, khoảng 0,7–1,2 giây
-      var dur = Math.min(1200, 700 + Math.abs(dist) * 2.2);
-      var start = null;
-      anim = { raf: 0 };
-      function step(t) {
-        if (!anim) return;
-        if (start === null) start = t;
-        var p = Math.min((t - start) / dur, 1);
-        window.scrollTo({ top: from + dist * ease(p), behavior: 'instant' });
-        if (p < 1) anim.raf = requestAnimationFrame(step); else anim = null;
-      }
-      anim.raf = requestAnimationFrame(step);
-    }
-    function settle() {
-      if (anim || !wide.matches || reduceMotion) return;
-      if (Date.now() - lastInput < IDLE || smooth.busy()) { schedule(); return; }   // người dùng vẫn đang cuộn
-      var y = window.scrollY;
-      var reach = Math.min(220, (window.innerHeight - HEADER) * 0.28);
-      var best = null, bestD = Infinity;
-      targets().forEach(function (t) {
-        var d = Math.abs(t - y);
-        if (d < bestD) { bestD = d; best = t; }
-      });
-      if (best !== null && bestD > 2 && bestD <= reach) glideTo(Math.round(best));
-    }
-    function schedule() { clearTimeout(timer); timer = setTimeout(settle, IDLE); }
-
-    // Người dùng chạm vào cuộn là dừng trượt ngay, trả lại quyền điều khiển
-    ['wheel', 'touchstart', 'touchmove', 'keydown', 'mousedown'].forEach(function (ev) {
-      window.addEventListener(ev, function () { lastInput = Date.now(); stopAnim(); }, { passive: true });
-    });
-    window.addEventListener('scroll', function () { if (!anim) schedule(); }, { passive: true });
-  })();
-
-  /* ---------- Bộ hiệu ứng hiện khi cuộn, dùng chung cho mọi trang ----------
-     data-rv: khối trồi lên; .rv-img: ảnh mở từ dưới lên rồi lùi về kích thước thật
-     (cùng kiểu với khung sản phẩm); data-py: ảnh trôi chậm khi cuộn. */
+  /* ---------- Ảnh mở khi cuộn tới, dùng chung cho mọi trang ----------
+     .rv-img: ảnh mở từ dưới lên rồi lùi về kích thước thật. Chữ không ẩn chờ cuộn:
+     nội dung luôn có sẵn, chỉ ảnh có một nhịp mở. */
   (function () {
     var items = document.querySelectorAll('[data-rv], .rv-img');
     if (!('IntersectionObserver' in window) || reduceMotion) { Array.prototype.forEach.call(items, function (el) { el.classList.add('is-in'); }); }
     else {
       var io = new IntersectionObserver(function (en) {
         en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -10% 0px' });
+      }, { rootMargin: '0px 0px -6% 0px' });
       Array.prototype.forEach.call(items, function (el) { io.observe(el); });
     }
-    var pys = Array.prototype.slice.call(document.querySelectorAll('[data-py]'));
-    if (!pys.length || reduceMotion) return;
-    var q = false;
-    function paint() {
-      q = false;
-      var vh = window.innerHeight;
-      pys.forEach(function (el) {
-        var r = el.parentElement.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > vh) return;
-        var c = (r.top + r.height / 2) / vh - 0.5;
-        el.style.setProperty('--py', (-c * Number(el.dataset.py || 30)).toFixed(1) + 'px');
-      });
-    }
-    window.addEventListener('scroll', function () { if (!q) { q = true; requestAnimationFrame(paint); } }, { passive: true });
-    window.addEventListener('resize', paint);
-    paint();
   })();
 
   /* ---------- Chuyển trang khi trình duyệt chưa có View Transitions ----------
@@ -945,22 +685,6 @@
   if (cultureEl) onceVisible(cultureEl, function () { cultureEl.classList.add('is-in'); }, 0.15);
 
   if (cultureEl) {
-    // Ảnh trôi chậm khi cuộn (lệch tối đa khoảng ±12px), giống nền section hành trình
-    var placeImgs = Array.prototype.slice.call(cultureEl.querySelectorAll('.place__img .ph'));
-    var pq2 = false;
-    var placeParallax = function () {
-      pq2 = false;
-      if (reduceMotion) return;
-      placeImgs.forEach(function (ph) {
-        var r = ph.parentElement.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > window.innerHeight) return;
-        var c = (r.top + r.height / 2) / window.innerHeight - 0.5;   // -0.5 → 0.5
-        ph.style.setProperty('--py', (-c * 24).toFixed(1) + 'px');
-      });
-    };
-    window.addEventListener('scroll', function () { if (!pq2) { pq2 = true; requestAnimationFrame(placeParallax); } }, { passive: true });
-    placeParallax();
-
     // Trạng thái trực tiếp theo giờ Việt Nam: nông trại đón khách thứ Hai – thứ Sáu, 8:00 – 16:00
     var farmStatus = document.getElementById('farmStatus');
     var shopStatus = document.getElementById('shopStatus');
@@ -998,193 +722,33 @@
     renderSeason = function () { renderSeasonPrev(); paintStatus(); };
   }
 
-  // Con số chạy lên
-  document.querySelectorAll('[data-count]').forEach(function (el) {
-    if (reduceMotion) return;
-    var to = Number(el.dataset.count);
-    var from = Number(el.dataset.from || 0);
-    el.textContent = String(from);
-    onceVisible(el, function () {
-      var start = null, dur = 900;
-      function tick(t) {
-        if (start === null) start = t;
-        var p = Math.min((t - start) / dur, 1);
-        var eased = 1 - Math.pow(1 - p, 4);
-        el.textContent = String(Math.round(from + (to - from) * eased));
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }, 0.6);
-  });
-
   /* ---------- Ba section cuối: hiện khi cuộn tới ---------- */
   document.querySelectorAll('[data-reveal]').forEach(function (sec) {
     onceVisible(sec, function () { sec.classList.add('is-in'); }, 0.18);
   });
 
-  /* ---------- Từ cây đến tách: đường lượn qua bốn viên, đường sáng chạy theo nhịp cuộn ---------- */
-  (function () {
-    var flow = document.getElementById('flow');
-    if (!flow) return;
-    var svg = flow.querySelector('.flow__svg');
-    var track = flow.querySelector('.flow__track');
-    var done = flow.querySelector('.flow__done');
-    var spark = flow.querySelector('.flow__spark');
-    var grad = document.getElementById('flowGrad');
-    var stepsEl = Array.prototype.slice.call(flow.querySelectorAll('.fstep'));
-    var pills = stepsEl.map(function (s) { return s.querySelector('.fstep__pill'); });
-    var total = 0, marks = [], cur = 0, tgt = 0, running = false, lastT = null;
-
-    // Dựng đường cong đi qua tâm từng viên (toạ độ điểm ảnh thật), nhô ra hai mép như đường hành trình
-    function build() {
-      var fr = flow.getBoundingClientRect();
-      if (!fr.width) return;
-      svg.setAttribute('viewBox', '0 0 ' + fr.width.toFixed(1) + ' ' + fr.height.toFixed(1));
-      grad.setAttribute('x2', fr.width.toFixed(0));
-      var pts = pills.map(function (p) {
-        var r = p.getBoundingClientRect();
-        return [r.left - fr.left + r.width / 2, r.top - fr.top + r.height / 2];
-      });
-      var first = pts[0], last = pts[pts.length - 1];
-      var all = [[Math.min(0, first[0] - 120), first[1] + 40]].concat(pts, [[Math.max(fr.width, last[0] + 120), last[1] - 40]]);
-      var d = 'M' + all[0][0].toFixed(1) + ' ' + all[0][1].toFixed(1);
-      for (var i = 1; i < all.length; i++) {
-        var a = all[i - 1], b = all[i], mx = (a[0] + b[0]) / 2;
-        d += ' C ' + mx.toFixed(1) + ' ' + a[1].toFixed(1) + ' ' + mx.toFixed(1) + ' ' + b[1].toFixed(1) + ' ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1);
-      }
-      track.setAttribute('d', d); done.setAttribute('d', d);
-      total = done.getTotalLength();
-      done.style.strokeDasharray = total + ' ' + total;
-      // Độ dài đường tới tâm từng viên (dò theo trục ngang)
-      marks = pts.map(function (pt) {
-        var lo = 0, hi = total;
-        for (var k = 0; k < 22; k++) { var m = (lo + hi) / 2; if (done.getPointAtLength(m).x < pt[0]) lo = m; else hi = m; }
-        return lo;
-      });
-      paint();
-    }
-    function target() {
-      var r = flow.getBoundingClientRect(), vh = window.innerHeight;
-      // 0 khi đỉnh dãy viên ở 90% màn hình → 1 khi đáy dãy lên tới 55% màn hình
-      return Math.max(0, Math.min(1, (vh * 0.9 - r.top) / (r.height + vh * 0.35)));
-    }
-    function paint() {
-      if (!total) return;
-      var len = cur * total;
-      done.style.strokeDashoffset = String(total - len);
-      var pt = done.getPointAtLength(Math.max(len, 0.01));
-      spark.setAttribute('cx', pt.x.toFixed(1)); spark.setAttribute('cy', pt.y.toFixed(1));
-      spark.style.opacity = cur > 0.005 && cur < 0.995 ? 1 : 0;
-      stepsEl.forEach(function (s, i) { s.classList.toggle('is-on', len >= marks[i] - 2); });
-    }
-    function step(t) {
-      var dt = lastT === null ? 16 : Math.min(t - lastT, 64);
-      lastT = t;
-      tgt = target();
-      cur += (tgt - cur) * (1 - Math.exp(-dt / 160));
-      paint();
-      if (Math.abs(tgt - cur) > 0.0005) requestAnimationFrame(step); else { cur = tgt; paint(); running = false; lastT = null; }
-    }
-    function kick() { if (reduceMotion) { cur = 1; paint(); return; } if (!running) { running = true; requestAnimationFrame(step); } }
-    build();
-    window.addEventListener('scroll', kick, { passive: true });
-    window.addEventListener('resize', function () { build(); kick(); });
-    window.addEventListener('load', build);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
-    kick();
-  })();
-
-  /* ---------- Nhật ký: ảnh bài nổi bật trôi chậm khi cuộn ---------- */
-  (function () {
-    var img = document.querySelector('.jfeat__img .ph');
-    if (!img || reduceMotion) return;
-    var q = false;
-    function pp() {
-      q = false;
-      var r = img.parentElement.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      var c = (r.top + r.height / 2) / window.innerHeight - 0.5;
-      img.style.setProperty('--py', (-c * 28).toFixed(1) + 'px');
-    }
-    window.addEventListener('scroll', function () { if (!q) { q = true; requestAnimationFrame(pp); } }, { passive: true });
-    pp();
-  })();
-
-  /* ---------- Chuyện ông Cao: vòng tư liệu ---------- */
+  /* ---------- Chuyện ông Cao: vòng tư liệu ----------
+     Bản 10kweb: không tự chạy vòng, không chấm sáng, không trôi theo cuộn.
+     Mốc đầu tiên mở sẵn; rê chuột hoặc dùng bàn phím để xem mốc khác. */
   (function () {
     var story = document.querySelector('.story');
     var orbit = document.getElementById('storyOrbit');
     if (!story || !orbit) return;
     var memos = Array.prototype.slice.call(orbit.querySelectorAll('.memo[data-i]'));
     var lines = Array.prototype.slice.call(orbit.querySelectorAll('.memo-line'));
-    var spark = orbit.querySelector('.story__spark');
-    var desktop = window.matchMedia('(min-width: 761px)');
-    lines.forEach(function (p) { p.style.setProperty('--len', p.getTotalLength().toFixed(1)); });
-
-    // Hiện ra một lần: tiêu đề từng cụm, sợi chỉ vẽ từ tâm ra, tư liệu hiện lần lượt
-    onceVisible(story, function () { story.classList.add('is-in'); setTimeout(startCycle, 2200); }, 0.2);
-
-    // Lần lượt kể từng mốc theo thứ tự thời gian; một chấm sáng chạy theo sợi chỉ từ tâm tới tư liệu
-    var cur = -1, timer = null, hoverLock = false, sparkRaf = null, inView = false;
-    function runSpark(i) {
-      if (reduceMotion || !desktop.matches) return;
-      cancelAnimationFrame(sparkRaf);
-      var p = lines[i], len = p.getTotalLength(), t0 = null, DUR = 1400;
-      function step(t) {
-        if (t0 === null) t0 = t;
-        var k = Math.min((t - t0) / DUR, 1);
-        var e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
-        var pt = p.getPointAtLength(e * len);
-        spark.setAttribute('cx', pt.x.toFixed(1)); spark.setAttribute('cy', pt.y.toFixed(1));
-        spark.style.opacity = k < .9 ? 1 : (1 - k) * 10;
-        if (k < 1) sparkRaf = requestAnimationFrame(step);
-      }
-      sparkRaf = requestAnimationFrame(step);
-    }
-    function show(i, withSpark) {
+    story.classList.add('is-in');
+    var cur = -1;
+    function show(i) {
       if (i === cur) return;
       cur = i;
       memos.forEach(function (m, k) { m.classList.toggle('is-on', k === i); });
       lines.forEach(function (l, k) { l.classList.toggle('is-on', k === i); });
-      if (withSpark !== false) runSpark(i);
     }
-    function next() { show((cur + 1) % memos.length); }
-    function startCycle() {
-      clearInterval(timer);
-      if (!desktop.matches) return;
-      if (cur < 0) show(0);
-      if (reduceMotion || !inView || hoverLock) return;
-      timer = setInterval(next, 3600);
-    }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (en) {
-        inView = en[0].isIntersecting;
-        if (inView && story.classList.contains('is-in')) startCycle(); else clearInterval(timer);
-      }, { threshold: 0.25 }).observe(orbit);
-    }
+    if (memos.length) show(0);
     memos.forEach(function (m, k) {
-      m.addEventListener('mouseenter', function () { hoverLock = true; clearInterval(timer); show(k); });
-      m.addEventListener('focus', function () { hoverLock = true; clearInterval(timer); show(k); });
-      m.addEventListener('mouseleave', function () { hoverLock = false; startCycle(); });
-      m.addEventListener('blur', function () { hoverLock = false; startCycle(); });
+      m.addEventListener('mouseenter', function () { show(k); });
+      m.addEventListener('focus', function () { show(k); });
     });
-
-    // Trôi nhẹ khi cuộn, mỗi tư liệu một độ sâu
-    var ticking = false;
-    function parallax() {
-      ticking = false;
-      if (reduceMotion || !desktop.matches) { memos.forEach(function (m) { m.style.transform = ''; }); return; }
-      var r = orbit.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      var center = r.top + r.height / 2 - window.innerHeight / 2;
-      memos.forEach(function (m) {
-        m.style.transform = 'translate3d(0,' + (center * Number(m.dataset.depth || 0)).toFixed(1) + 'px,0)';
-      });
-    }
-    window.addEventListener('scroll', function () {
-      if (!ticking) { ticking = true; requestAnimationFrame(parallax); }
-    }, { passive: true });
-    parallax();
   })();
 
   /* ---------- Footer: nền đứng yên, thẻ kính trượt lên phủ qua (nhịp học theo Delta) ---------- */
